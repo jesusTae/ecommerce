@@ -23,7 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8078/Ecommerce/';
+date_default_timezone_set('America/Bogota');
+$config['base_url'] = 'http://localhost/ecommerce/Ecommerce/';
 
 /*
 |--------------------------------------------------------------------------

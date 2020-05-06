@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="<?php echo base_url('asset/css/site.css') ?>" />
     <link rel="stylesheet" href="<?php echo base_url('asset/css/style.css') ?>" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="<?php echo base_url('asset/js/jquery-3.2.1.min.js') ?>"></script>
+
+   
+    <link href="<?php echo base_url('asset/css/alertify.css');?>" rel="stylesheet">
+    <link href="<?php echo base_url('asset/css/themes/bootstrap.css');?>" rel="stylesheet">
 
     <style>
         .primary-color {

@@ -35,7 +35,7 @@
                 <label>Repetir Contraseña</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" id="passwordR" min="8" max="16" name="password" placeholder="Repetir Contraseña">
+                    <input type="password" class="form-control" id="passwordR" min="8" max="16" name="passwordR" placeholder="Repetir Contraseña">
                 </div>
                 <span class="help-block"></span>
 
@@ -52,8 +52,12 @@
                     <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direcccion">
                 </div>
                 <span class="help-block"></span>
-                <button class="btn btn-lg btn-success btn-block mt-2" type="button">Registrarse</button>
+                <button class="btn btn-lg btn-success btn-block mt-2" type="button" id="BtnRegistrar">Registrarse</button>
             </div>
         </div>
     </div>
 </div>
+<script>
+    var urlRegistrar = "<?php echo site_url('Registrar/guardar')?>";
+</script>
+<script src="<?php echo base_url('asset/ajax/registrar.js');?>"></script>
