@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="<?php echo base_url('asset/css/bootstrap.min.css') ?>" />    
     <link rel="stylesheet" href="<?php echo base_url('asset/css/font-awesome.min.css') ?>" />
     <link rel="stylesheet" href="<?php echo base_url('asset/css/owl.carousel.css') ?>" />
-    <link rel="stylesheet" href="<?php echo base_url('asset/css/style.css') ?>" />
     <link rel="stylesheet" href="<?php echo base_url('asset/css/animate.css') ?>" />
-    <link href="<?php echo base_url('asset/css/site.css" rel="stylesheet') ?>" />
+    <link rel="stylesheet" href="<?php echo base_url('asset/css/site.css') ?>" />
+    <link rel="stylesheet" href="<?php echo base_url('asset/css/style.css') ?>" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
     <style>
