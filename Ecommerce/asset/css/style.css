@@ -124,8 +124,8 @@ ol {
 }
 
 .spad {
-	padding-top: 80px;
-	padding-bottom: 80px;
+	    padding-top: 14PX;
+	padding-bottom: 14px;
 }
 
 .text-white h1,
@@ -561,31 +561,6 @@ ol {
 	opacity: 1;
 }
 
-.scrollbar {
-	margin: 80px auto 0;
-	width: 100%;
-	height: 7px;
-	line-height: 0;
-	background: #ececec;
-	overflow: hidden;
-}
-
-.scrollbar .handle {
-	width: 100px;
-	height: 100%;
-	background: #fff;
-	cursor: pointer;
-}
-
-.scrollbar .handle .mousearea {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 7px;
-	background: #b09d81;
-	border-radius: 30px;
-}
 
 .intro-slider {
 	width: 100%;
@@ -643,7 +618,7 @@ ol {
 .product-filter {
 	list-style: none;
 	text-align: center;
-	margin-bottom: 90px;
+	margin-bottom: 26px;
 }
 
 .product-filter li {
