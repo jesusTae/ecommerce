@@ -97,7 +97,7 @@ $(document).ready(function(){
                     });
                 }else{
                     alertify
-                        .alert("Mensaje!","<h3 class='text-center'>Este documento ya se encuentra registrado.</h3>", function(){
+                        .alert("Mensaje!","<h3 class='text-center'>Este usuario ya se encuentra registrado.</h3>", function(){
                     });
                 }
             }

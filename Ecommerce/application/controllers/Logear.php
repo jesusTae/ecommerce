@@ -20,11 +20,13 @@ class Logear extends CI_Controller{
 
         $id_usuario         = $data['u_id '];
         $nit_tusuario       = $data['u_nitter'];
+        $usuario            = $data['u_usuario'];
         $nombre_usuario     = $data['u_username'];
         $tipo_usuario       = $data['u_tipo'];
         
         $sesdata = array(
             'id_usuario'        => $id_usuario,
+            'usuario'           => $usuario,
             'nit_tusuario'      => $nit_tusuario,
             'nombre_usuario'    => $nombre_usuario,
             'tipo_usuario'      => $tipo_usuario,

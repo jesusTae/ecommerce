@@ -14,9 +14,9 @@ class ModeloRegistrar extends CI_Model
 
         $fecha = date("Y-m-d h:i:s");
 
-        $this->db->select(' u_nitter ');
+        $this->db->select(' u_usuario ');
         $this->db->from('tbl_usuarios');
-        $this->db->where('u_nitter',$nitter);
+        $this->db->where('u_usuario',$email);
         $rest=$this->db->get();
 
         if($rest->num_rows()==1)
@@ -28,6 +28,7 @@ class ModeloRegistrar extends CI_Model
 
             $data=array(
                 'u_nitter'=>$nitter,
+                'u_usuario'=>$email,
                 'u_username'=>$username,
                 'u_tipo'=>2,
                 'u_email'=>$email,
