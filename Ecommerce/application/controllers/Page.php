@@ -16,25 +16,25 @@ class Page extends CI_Controller
       if($this->session->userdata('tipo_usuario')==='1')
       {
        
-          //$this->load->view('componentes/header');
-          //$this->load->view('componentes/menu');
+          $this->load->view('componentes2/header');
+          $this->load->view('componentes2/menu');
           $this->load->view('welcome_message');
-          //$this->load->view('componentes/footer');
+          $this->load->view('componentes2/footer');
          
       }
       elseif($this->session->userdata('tipo_usuario')==='2')
       {
-          //$this->load->view('componentes/header');
-          //$this->load->view('componentes/menu');
+          $this->load->view('componentes2/header');
+          $this->load->view('componentes2/menu');
           $this->load->view('welcome_message');
-          //$this->load->view('componentes/footer');
+          $this->load->view('componentes2/footer');
       }
       elseif($this->session->userdata('tipo_usuario')==='3')
       {
-          //$this->load->view('componentes/header');
-          //$this->load->view('componentes/menu');
+          $this->load->view('componentes2/header');
+          $this->load->view('componentes2/menu');
           $this->load->view('welcome_message');
-          //$this->load->view('componentes/footer');
+          $this->load->view('componentes2/footer');
       }
       else
       {
