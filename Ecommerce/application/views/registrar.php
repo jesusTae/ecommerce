@@ -1,63 +1,130 @@
-<img src="<?php echo base_url('asset/img/global.png')?>" width="150" heigth="150" style="position: fixed; " />
-<div class="container" style="position: absolute; top: 5%; left: 5%;">
-    <div class="omb_login">
-        <h3 class="omb_authTitle"><a href="#">Registrarse</h3>
-        <div class="row omb_row-sm-offset-3">
-            <div class="col-xs-12 col-sm-6">
-                <label>Nombres</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Nombre de usuario">
-                </div>
-                <span class="help-block"></span>
+<!DOCTYPE html>
+<html lang="es">
 
-                <label>Numero de identificacion</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user-check"></i></span>
-                    <input type="text" class="form-control" id="nitter" name="nitter" placeholder="Identificacion del usuario">
-                </div>
-                <span class="help-block"></span>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>ECOMMERCE</title>
 
-                <label>Correo electronico</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Correo electronico">
-                </div>
-                <span class="help-block"></span>
+  <!-- Favicons -->
+  <link href="<?php echo base_url('asset/administrativo/img/favicon.png')?>" rel="icon">
+  
+  <link href="<?php echo base_url('asset/administrativo/img/apple-touch-icon.png')?>" rel="apple-touch-icon">
+  
+  <!-- Bootstrap core CSS -->
+  <link href="<?php echo base_url('asset/administrativo/lib/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
+  
+  <!--external css-->
+  <link href="<?php echo base_url('asset/administrativo/lib/font-awesome/css/font-awesome.css')?>" rel="stylesheet" />
+  
+  <!-- Custom styles for this template -->
+  <link href="<?php echo base_url('asset/administrativo/css/style.css')?>" rel="stylesheet">
+  
+  <link href="<?php echo base_url('asset/administrativo/css/style-responsive.css')?>" rel="stylesheet">
 
-                <label>Contraseña</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" id="password" min="8" max="16" name="password" placeholder="Contraseña">
-                </div>
-                <span class="help-block"></span>
+  <link href="<?php echo base_url('asset/administrativo/css/alertify.css');?>" rel="stylesheet">
+  <link href="<?php echo base_url('asset/administrativo/css/themes/semantic.css');?>" rel="stylesheet">
+  
+  <!-- =======================================================
+    Template Name: Dashio
+    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+    Author: TemplateMag.com
+    License: https://templatemag.com/license/
+  ======================================================= -->
+</head>
 
-                <label>Repetir Contraseña</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" id="passwordR" min="8" max="16" name="passwordR" placeholder="Repetir Contraseña">
+<body style="background-color: #F9FAFA;">
+  <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+    <div id="login-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="<?php echo base_url('asset/administrativo/img/global.png')?>" class="img-fluid" width="200">
                 </div>
-                <span class="help-block"></span>
-
-                <label>Telefono</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono">
+            </div>
+            <div class="row">
+                <h4><i class="fa fa-angle-right"></i> Formulario de registro</h4>
+                <div class="form-panel">
+                    <div class="form">
+                        <form class="cmxform form-horizontal style-form" id="signupForm" method="get" action="">
+                            <div class="form-group">
+                                <div class="col-lg-offset-0 col-lg-10">
+                                    <a class="btn btn-success" href="<?php echo site_url('ControladorIniciarsesion');?>"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver</a>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="firstname" class="control-label col-lg-2">Nombres</label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name="username" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="lastname" class="control-label col-lg-2">Numero de identificacion</label>
+                                <div class="col-lg-10">
+                                    <input class=" form-control" name="nitter" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="username" class="control-label col-lg-2">Correo electronico</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="email" type="email" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="password" class="control-label col-lg-2">Contraseña</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control " name="password" type="password" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="confirm_password" class="control-label col-lg-2">Confirmar Contraseña</label>
+                                <div class="col-lg-10">
+                                <input class="form-control " name="passwordR" type="password" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="email" class="control-label col-lg-2">Telefono</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="telefono" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="email" class="control-label col-lg-2">Direccion</label>
+                                <div class="col-lg-10">
+                                    <input class="form-control" name="direccion" type="text" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                    <button type="button" class="btn btn-success" id="BtnRegistrar">Registrarse</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <span class="help-block"></span>
-
-                <label>Direccion</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direcccion">
-                </div>
-                <span class="help-block"></span>
-                <button class="btn btn-lg btn-success btn-block mt-2" type="button" id="BtnRegistrar">Registrarse</button>
             </div>
         </div>
     </div>
-</div>
-<script>
-    var urlRegistrar = "<?php echo site_url('Registrar/guardar')?>";
-</script>
-<script src="<?php echo base_url('asset/ajax/registrar.js');?>"></script>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="<?php echo base_url('asset/administrativo/lib/jquery/jquery.min.js')?>"></script>
+    
+    <script src="<?php echo base_url('asset/administrativo/lib/bootstrap/js/bootstrap.min.js')?>"></script>
+    
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" src="<?php echo base_url('asset/administrativo/lib/jquery.backstretch.min.js')?>"></script>
+    <!--ALERTIFY-->
+    <script src="<?php echo base_url('asset/administrativo/lib/bootstrap/js/bootstrap.min.js')?>"></script>
+    <script src="<?php echo base_url('asset/administrativo/js/alertify.js');?>"></script>	
+    <script>
+        var urlRegistrar = "<?php echo site_url('ControladorRegistrar/guardar')?>";
+    </script>
+    <script src="<?php echo base_url('asset/ajax/registrar.js');?>"></script>
+  
+</body>
+</html>
