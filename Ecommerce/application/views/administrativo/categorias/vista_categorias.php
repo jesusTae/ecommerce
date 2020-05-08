@@ -46,8 +46,8 @@
             <br>
             <div class="form-group">
                 <label>Nombre Categoria</label>
-                <input type="text" class="form-control" name="categoriasNombre" placeholder="Nombre Categoria...">
-                <input type="hidden" class="form-control" name="categoriasId" >
+                <input type="text" class="form-control" name="nomgru" placeholder="Nombre Categoria...">
+                <input type="hidden" class="form-control" name="id" >
             </div>
             <hr>
             <button type="button" class="btn btn-danger fa fa-trash-o" id="btnEliminarCategorias"> Eliminar</button>

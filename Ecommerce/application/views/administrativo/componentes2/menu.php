@@ -183,18 +183,15 @@
               <span>Principal</span>
               </a>
           </li>
-        
-          <li>
-            <a href="#">
-              <i class="fa fa-envelope"></i>
-              <span>Inventario </span>
-              </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('administrativo/ControladorCategorias');?>">
+          <li class="sub-menu">
+            <a href="javascript:;">
               <i class="fa fa-list"></i>
-              <span>Categoria </span>
-              </a>
+              <span>Inventario</span>
+            </a>
+            <ul class="sub">
+              <li><a href="<?php echo site_url('administrativo/ControladorCategorias');?>">Categoria</a></li>
+              <li><a href="#">Productos</a></li>
+            </ul>
           </li>
           <li>
             <a href="<?php echo site_url('administrativo/ControladorUsuarios');?>">

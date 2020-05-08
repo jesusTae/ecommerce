@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2020 a las 22:24:31
+-- Tiempo de generación: 08-05-2020 a las 23:29:48
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.5
 
@@ -28,23 +28,33 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tbl_categorias` (
-  `c_id` int(11) NOT NULL,
-  `c_nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `c_fechacrea` datetime NOT NULL,
-  `c_fechamod` datetime NOT NULL,
-  `c_usuariocrea` int(11) NOT NULL,
-  `c_usuariomod` int(11) NOT NULL,
-  `c_estado` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `codgru` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `nomgru` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `fechacrea` datetime NOT NULL,
+  `fechamod` datetime NOT NULL,
+  `usuariocrea` int(11) NOT NULL,
+  `usuariomod` int(11) NOT NULL,
+  `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_categorias`
 --
 
-INSERT INTO `tbl_categorias` (`c_id`, `c_nombre`, `c_fechacrea`, `c_fechamod`, `c_usuariocrea`, `c_usuariomod`, `c_estado`) VALUES
-(1, 'prueba1', '2020-05-08 03:12:24', '2020-05-08 03:12:24', 2, 2, 1),
-(2, 'prueba2', '2020-05-08 03:12:34', '2020-05-08 03:16:58', 2, 2, 1),
-(3, 'prueba3', '2020-05-08 03:20:00', '2020-05-08 03:22:12', 2, 2, 2);
+INSERT INTO `tbl_categorias` (`id`, `codgru`, `nomgru`, `fechacrea`, `fechamod`, `usuariocrea`, `usuariomod`, `estado`) VALUES
+(1, '001', 'uno', '2020-05-08 04:16:15', '2020-05-08 04:16:15', 2, 2, 1),
+(2, '002', 'doswww', '2020-05-08 04:16:40', '2020-05-08 04:24:49', 2, 2, 2),
+(3, '003', 'tres', '2020-05-08 04:17:30', '2020-05-08 04:17:30', 2, 2, 1),
+(4, '004', 'cuatro', '2020-05-08 04:17:53', '2020-05-08 04:17:53', 2, 2, 1),
+(5, '005', 'cinco', '2020-05-08 04:18:48', '2020-05-08 04:18:48', 2, 2, 1),
+(6, '006', 'seis', '2020-05-08 04:19:09', '2020-05-08 04:19:09', 2, 2, 1),
+(7, '007', 'siete', '2020-05-08 04:19:16', '2020-05-08 04:19:16', 2, 2, 1),
+(8, '008', 'ocho', '2020-05-08 04:19:31', '2020-05-08 04:19:31', 2, 2, 1),
+(9, '009', 'nueve', '2020-05-08 04:19:49', '2020-05-08 04:19:49', 2, 2, 1),
+(10, '010', 'diez', '2020-05-08 04:20:00', '2020-05-08 04:20:00', 2, 2, 1),
+(11, '011', 'once', '2020-05-08 04:20:12', '2020-05-08 04:20:12', 2, 2, 1),
+(12, '012', 'doce', '2020-05-08 04:20:28', '2020-05-08 04:20:28', 2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -111,7 +121,7 @@ INSERT INTO `tbl_usuarios` (`u_id`, `u_nitter`, `u_usuario`, `u_username`, `u_ti
 -- Indices de la tabla `tbl_categorias`
 --
 ALTER TABLE `tbl_categorias`
-  ADD PRIMARY KEY (`c_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tbl_tipousuarios`
@@ -133,7 +143,7 @@ ALTER TABLE `tbl_usuarios`
 -- AUTO_INCREMENT de la tabla `tbl_categorias`
 --
 ALTER TABLE `tbl_categorias`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_tipousuarios`

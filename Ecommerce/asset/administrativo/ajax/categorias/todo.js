@@ -51,8 +51,8 @@ $(document).ready(function(){
 
                 },
                 "columns": [
-                    { "data": "c_id"}, 
-                    { "data": "c_nombre"},
+                    { "data": "id"}, 
+                    { "data": "nomgru"},
                     { "data": "usuario"},
                     { "data": "fecha"},
                 ],
@@ -72,8 +72,8 @@ $(document).ready(function(){
 
 $('#btnCreaCategorias').on('click',function(){
 
-    $('[name="categoriasId"]').val(0);
-    $('[name="categoriasNombre"]').val('');
+    $('[name="id"]').val(0);
+    $('[name="nomgru"]').val('');
    
     $("#btnEliminarCategorias").addClass("invisible");
 
@@ -82,19 +82,19 @@ $('#btnCreaCategorias').on('click',function(){
 
 $('#btnGuardarCategorias').on('click',function(){
 
-    var id       = $('[name="categoriasId"]').val();
-    var nombre   = $('[name="categoriasNombre"]').val();
+    var id       = $('[name="id"]').val();
+    var nomgru   = $('[name="nomgru"]').val();
 
-    if(nombre=="")
+    if(nomgru=="")
     {
         alertify.error('Digite el Nombre de la categoria');
-        $('[name="categoriasNombre"]').focus();
+        $('[name="nomgru"]').focus();
         return false;
     }
 
     var formData = new FormData();
     formData.append('id',id );
-    formData.append('nombre',nombre );
+    formData.append('nomgru',nomgru );
 
     $.ajax({
         type : "POST",
@@ -125,11 +125,11 @@ $('#tablaCategorias tbody').on('click','tr',function() {
        
     var data = table.row( $(this) ).data();
 
-    var id = data.c_id  ;
-    var nombre = data.c_nombre;
+    var id = data.id  ;
+    var nomgru = data.nomgru;
    
-    $('[name="categoriasId"]').val(id);
-    $('[name="categoriasNombre"]').val(nombre);
+    $('[name="id"]').val(id);
+    $('[name="nomgru"]').val(nomgru);
 
     $("#btnEliminarCategorias").removeClass("invisible");
    
@@ -138,14 +138,14 @@ $('#tablaCategorias tbody').on('click','tr',function() {
 
 $('#btnEliminarCategorias').on('click',function(){
 
-    var id = $('[name="categoriasId"]').val();
-    var nombre = $('[name="categoriasNombre"]').val();
+    var id = $('[name="id"]').val();
+    var nomgru = $('[name="nomgru"]').val();
 
     var formData = new FormData();
     formData.append('id',id );
-    formData.append('nombre',nombre );
+    formData.append('nomgru',nomgru );
    
-    alertify.confirm('<h3 class="text-center fa fa-trash-o"> Eliminar</h3>', '<h6 class="text-center">Deseas eliminar a '+nombre+'</h6>', function(){ 
+    alertify.confirm('<h3 class="text-center fa fa-trash-o"> Eliminar</h3>', '<h6 class="text-center">Deseas eliminar a '+nomgru+'</h6>', function(){ 
 
             $.ajax({
                 type : "POST",
