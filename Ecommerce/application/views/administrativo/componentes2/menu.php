@@ -202,6 +202,12 @@
               <span>Usuarios </span>
               </a>
           </li>
+          <li>
+            <a href="<?php echo site_url('administrativo/ControladorUsuarios/pass');?>">
+              <i class="fa fa-unlock-alt"></i>
+              <span>Cambiar Contraseña </span>
+              </a>
+          </li>
         </ul>
         <!-- sidebar menu end-->
       </div>
