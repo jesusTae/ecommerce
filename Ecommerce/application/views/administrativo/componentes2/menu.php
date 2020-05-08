@@ -190,7 +190,7 @@
             </a>
             <ul class="sub">
               <li><a href="<?php echo site_url('administrativo/ControladorCategorias');?>">Categoria</a></li>
-              <li><a href="#">Productos</a></li>
+              <li><a href="<?php echo site_url('administrativo/ControladorArticulos');?>">Articulos</a></li>
             </ul>
           </li>
           <li>
