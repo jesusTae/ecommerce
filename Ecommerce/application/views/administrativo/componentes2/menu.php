@@ -191,8 +191,8 @@
               </a>
           </li>
           <li>
-            <a href="#">
-              <i class="fa fa-envelope"></i>
+            <a href="<?php echo site_url('administrativo/ControladorCategorias');?>">
+              <i class="fa fa-list"></i>
               <span>Categoria </span>
               </a>
           </li>
