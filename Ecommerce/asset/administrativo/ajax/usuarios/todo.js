@@ -279,7 +279,7 @@ $('#tablaUsuarios tbody').on('click','tr',function() {
     var correo = data.u_email;
     var usuario = data.u_usuario;
     var tipo = data.u_tipo	;
-    var tiponombre = data.u_tipo;
+    var tiponombre = data.tipo;
     var pass = data.u_password;
     var telefono = data.u_telefono;
     var direccion = data.u_direccion;
