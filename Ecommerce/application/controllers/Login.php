@@ -18,7 +18,7 @@ class Login extends CI_Controller{
     {
         $data  = $validate->row_array();
 
-        $id_usuario         = $data['u_id '];
+        $id_usuario         = $data['u_id'];
         $nit_tusuario       = $data['u_nitter'];
         $usuario            = $data['u_usuario'];
         $nombre_usuario     = $data['u_username'];

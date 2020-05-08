@@ -16,7 +16,6 @@
     <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
-  <script src="<?php echo base_url('asset/administrativo/lib/jquery/jquery.min.js')?>"></script>
   <script src="<?php echo base_url('asset/administrativo/lib/bootstrap/js/bootstrap.min.js')?>"></script>
   <script src="<?php echo base_url('asset/administrativo/lib/jquery-ui-1.9.2.custom.min.js')?>"></script>
   <script src="<?php echo base_url('asset/administrativo/lib/jquery.ui.touch-punch.min.js')?>"></script>
@@ -25,6 +24,9 @@
   <script src="<?php echo base_url('asset/administrativo/lib/jquery.nicescroll.js')?>" type="text/javascript"></script>
   <!--common script for all pages-->
   <script src="<?php echo base_url('asset/administrativo/lib/common-scripts.js')?> "></script>
+  <script src="<?php echo base_url('asset/administrativo/js/datatables.min.js');?>"></script>
+  <script src="<?php echo base_url('asset/administrativo/js/alertify.js');?>"></script>	
+  
   <!--script for this page-->
 </body>
 

@@ -37,6 +37,8 @@ class ModeloRegistrar extends CI_Model
                 'u_direccion'=>$direccion,
                 'u_fechacrea'=>$fecha,
                 'u_fechamod'=>$fecha,
+                'u_usuariocrea'=>0,
+                'u_usuariomod'=>0,
                 'u_estado'=>1,
             );
         
