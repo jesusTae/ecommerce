@@ -10,6 +10,7 @@ class ControladorArticulos extends CI_Controller
             redirect('login');
         }
 		$this->load->model('administrativo/ModeloArticulos');
+	
     }
     
 	public function index()

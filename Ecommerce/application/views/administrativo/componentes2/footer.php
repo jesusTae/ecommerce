@@ -26,6 +26,7 @@
   <script src="<?php echo base_url('asset/administrativo/lib/common-scripts.js')?> "></script>
   <script src="<?php echo base_url('asset/administrativo/js/datatables.min.js');?>"></script>
   <script src="<?php echo base_url('asset/administrativo/js/alertify.js');?>"></script>	
+  <script src="<?php echo base_url('asset/administrativo/lib/bootstrap-fileupload/bootstrap-fileupload.js');?>"></script>	
   
   <!--script for this page-->
 </body>

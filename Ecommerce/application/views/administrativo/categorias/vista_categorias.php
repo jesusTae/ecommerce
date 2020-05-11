@@ -4,7 +4,7 @@
         <h3><i class="fa fa-angle-right"></i> Categorias</h3>
         <div class="row mt">
           	<div class="col-lg-12">
-              <button type="button" class="btn btn-success fa fa-user-circle-o" id="btnCreaCategorias"> Crear Categoria</button>
+              <button type="button" class="btn btn-success fa fa-list" id="btnCreaCategorias"> Crear Categoria</button>
                 <div class="table-responsive">
                     <table class="table table-sm  table-bordered" id="tablaCategorias">
                         <thead>
