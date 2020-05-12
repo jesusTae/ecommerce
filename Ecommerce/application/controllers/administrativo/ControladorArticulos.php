@@ -27,6 +27,12 @@ class ControladorArticulos extends CI_Controller
 		echo json_encode($data);
 	}
 
+	public function categoria()
+	{
+		$data=$this->ModeloArticulos->getcategoria();
+		echo json_encode($data);
+	}
+
 	public function guardar()
 	{
 		$data=$this->ModeloArticulos->getguardar();

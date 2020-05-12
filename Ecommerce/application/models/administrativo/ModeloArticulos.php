@@ -5,17 +5,41 @@ class ModeloArticulos extends CI_Model
 {
     function gettodo()
     {
-        $this->db->select(' *, DATE(fechacrea) AS fecha ');
-        $this->db->from('tbl_articulos');
-        $this->db->where('estado',1);
+        $this->db->select(' a.*, 
+                            DATE(a.fechacrea) AS fecha,
+                            c.nomgru
+                             ');
+        $this->db->from('tbl_articulos a');
+        $this->db->join('tbl_categorias c', 'c.id  = a.categoria');
+        $this->db->where('a.estado',1);
         $rest=$this->db->get();
         return $rest->result();
+    }
+
+    function getcategoria()
+    {
+        $searchTerm = $this->input->post('searchTerm');
+
+        // Fetch users
+        $this->db->select('id,nomgru');
+        $this->db->where("nomgru like '%".$searchTerm."%' ");
+        $this->db->where("estado",1);
+        $fetched_records = $this->db->get('tbl_categorias');
+        $users = $fetched_records->result_array();
+ 
+        // Initialize Array with fetched data
+        $data = array();
+        foreach($users as $user){
+            $data[] = array("id"=>$user['id'], "text"=>$user['nomgru']);
+        }
+        return $data;
     }
 
     function getguardar()
     {
         $id             =   $this->input->post('id');
         $urlimg         =   $this->input->post('urlimg');
+        $categoria      =   $this->input->post('categoria');
         $codart         =   $this->input->post('codart');
         $nomart         =   $this->input->post('nomart');
         $valart         =   $this->input->post('valart');
@@ -41,6 +65,7 @@ class ModeloArticulos extends CI_Model
                 $data=array(
                     'imageurl'=>'',
                     'imagenombre'=>'',
+                    'categoria'=>$categoria,
                     'codart'=>$codart,
                     'nomart'=>$nomart,
                     'valart'=>$valart,
@@ -95,6 +120,7 @@ class ModeloArticulos extends CI_Model
             $data=array(
                 'imageurl'=>'',
                 'imagenombre'=>'',
+                'categoria'=>$categoria,
                 'nomart'=>$nomart,
                 'valart'=>$valart,
                 'qtyart'=>$qtyart,

@@ -19,7 +19,7 @@ $(document).ready(function(){
                 },
                 "initComplete": function () {
                      //Apply text search
-                    this.api().columns([1,2,3,4]).every(function () {
+                    this.api().columns([2,3,4,5]).every(function () {
                         var title = $(this.footer()).text();
                     
                         $(this.footer()).html('<input type="text" class="form-control "  placeholder="Buscar..." />');
@@ -34,7 +34,7 @@ $(document).ready(function(){
 
                     });
 
-                    this.api().columns([5]).every(function () {
+                    this.api().columns([6]).every(function () {
                         var title = $(this.footer()).text();
                     
                         $(this.footer()).html('<input type="date" class="form-control form-control-sm" placeholder="Buscar..." />');
@@ -49,6 +49,26 @@ $(document).ready(function(){
 
                     });
 
+                    this.api().columns([1]).every(function () {
+                        var column = this;
+                        var select = $('<select class="form-control selectdos" style="width:100%;"><option value="">Todo</option></select>')
+                        .appendTo($(column.footer()).empty())
+                        .on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+                            column
+                            .search( val ? '^'+val+'$' : '', true, false)
+                            .draw();
+                         });
+
+                        column.data().unique().sort().each(function (d,j) {
+                            select.append('<option value="'+d+'">'+d+'</option>');
+                        });
+                    });
+
+                    $('.selectdos').select2();
+
                 },
                 "columns": [
                     { "data": null,
@@ -57,6 +77,7 @@ $(document).ready(function(){
                             return '<div class=col-md-12 text-center"><img src="'+urlArticulosblanco+'/'+full.imageurl+'" alt="Imagen del porducto"  class="thumbnail" width="40px" /></div>';
                         }
                     },
+                    { "data": "nomgru"},
                     { "data": "codart"},
                     { "data": "nomart"},
                     { "data": "valart", render: $.fn.dataTable.render.number(",", ".", 0, '$ ')},
@@ -83,10 +104,40 @@ $(document).ready(function(){
     
 });
 
+ //select
+ $('.categoria').select2({
+    dropdownParent: $('#exampleModal'),
+    placeholder: 'Selecciona una categoria',
+    allowClear: true,
+    width: '100%',
+    ajax: {
+            type: "post",
+            url: urlArticuloscategoria,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    searchTerm: params.term // search term
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data
+                };
+            },
+            cache: true
+    }
+});
+
 $('#btnCreaArticulos').on('click',function(){
 
     $('[name="id"]').val(0);
     $('[name="urlimg"]').val('');
+    $('[name="categoria"]').append($('<option>', {
+        val: '',
+        text:'',
+        selected: true
+    }));
     $('[name="codart"]').val('');
     $('[name="nomart"]').val('');
     $('[name="valart"]').val('');
@@ -104,11 +155,20 @@ $('#btnGuardarArticulos').on('click',function(){
 
     var id           =  $('[name="id"]').val();
     var urlimg       =  $('[name="urlimg"]').val();
+    var categoria    =  $('[name="categoria"]').val();
     var codart       =  $('[name="codart"]').val();
     var nomart       =  $('[name="nomart"]').val();
     var valart       =  $('[name="valart"]').val();
     var qtyart       =  $('[name="qtyart"]').val();
     var descripción  =  $('[name="descripción"]').val();
+
+
+    if(categoria=="")
+    {
+        alertify.error('Digite la categoria');
+        $('[name="categoria"]').focus();
+        return false;
+    }
 
     if(codart=="")
     {
@@ -163,6 +223,7 @@ $('#btnGuardarArticulos').on('click',function(){
     formData.append('valart',valart );
     formData.append('qtyart',qtyart );
     formData.append('descripción',descripción );
+    formData.append('categoria',categoria );
 
     $.ajax({
         type : "POST",
@@ -200,6 +261,8 @@ $('#tablaArticulos tbody').on('click','tr',function() {
     var valart      = data.valart;
     var qtyart      = data.qtyart;
     var descripción = data.descripción;
+    var categoria   = data.categoria;
+    var categorianom = data.nomgru;
    
     $('[name="id"]').val(id);
     $('[name="urlimg"]').val(urlimg);
@@ -208,6 +271,12 @@ $('#tablaArticulos tbody').on('click','tr',function() {
     $('[name="valart"]').val(valart);
     $('[name="qtyart"]').val(qtyart);
     $('[name="descripción"]').val(descripción);
+
+    $('[name="categoria"]').append($('<option>', {
+        val: categoria,
+        text:categorianom,
+        selected: true
+    }));
 
     $('[name="codart"]').prop( "disabled", true );
 

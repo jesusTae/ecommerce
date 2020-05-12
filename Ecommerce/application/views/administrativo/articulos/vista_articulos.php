@@ -10,6 +10,7 @@
                         <thead>
                             <tr>
                                 <th>Imagen</th>
+                                <th>Categoria</th>
                                 <th>Codigo</th>
                                 <th>Nombre</th>
                                 <th>Valor</th>
@@ -18,6 +19,7 @@
                             </tr>
                         </thead>
                         <tfoot>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -66,7 +68,11 @@
                     </div>
                 </div>
             </div>
-            
+
+            <div class="form-group">
+                <label>Seleccione categoria</label>
+                <select class="form-control categoria" name="categoria" ></select>
+            </div>
             <div class="form-group">
                 <label>Codigo del articulo</label>
                 <input type="text" class="form-control" name="codart" placeholder="Codigo del articulo...">
@@ -104,10 +110,11 @@
 
 
 <script>
-    var urlArticulosTabla      = "<?php echo site_url('administrativo/ControladorArticulos/todo')?>";
-    var urlArticulosGuardar    = "<?php echo site_url('administrativo/ControladorArticulos/guardar')?>";
-    var urlArticulosEliminar   = "<?php echo site_url('administrativo/ControladorArticulos/eliminar')?>";
-    var urlArticulosblanco  = "<?php echo base_url()?>";
+    var urlArticulosTabla       = "<?php echo site_url('administrativo/ControladorArticulos/todo')?>";
+    var urlArticulosGuardar     = "<?php echo site_url('administrativo/ControladorArticulos/guardar')?>";
+    var urlArticulosEliminar    = "<?php echo site_url('administrativo/ControladorArticulos/eliminar')?>";
+    var urlArticulosblanco      = "<?php echo base_url()?>";
+    var urlArticuloscategoria   = "<?php echo site_url('administrativo/ControladorArticulos/categoria')?>";
 </script>
 
 <script src="<?php echo base_url('asset/administrativo/ajax/articulos/todo.js')?>" type="text/javascript"></script>
