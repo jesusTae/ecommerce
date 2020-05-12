@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2020 a las 22:09:50
+-- Tiempo de generación: 12-05-2020 a las 23:41:44
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.5
 
@@ -31,6 +31,7 @@ CREATE TABLE `tbl_articulos` (
   `id` int(11) NOT NULL,
   `imageurl` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `imagenombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `categoria` int(11) NOT NULL,
   `codart` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `nomart` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `valart` bigint(20) NOT NULL,
