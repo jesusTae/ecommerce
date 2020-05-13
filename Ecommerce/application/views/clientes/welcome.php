@@ -1,135 +1,184 @@
-<style type="text/css">
-	.carousel-item{
-		height: 87vh;
-	}
-	.art_descrip{
-		font-size: 10px;
-	    font-weight: 500;
-	    color: #d33484;
-	    line-height: 1.3;
-	    margin-bottom: .4rem;
-	}
+<style>
+
+
+/** card */
+.blog-card-blog {
+    margin-top: 30px;
+}
+.blog-card {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    color: rgba(0, 0, 0, 0.87);
+    background: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.blog-card .blog-card-image {
+    height: 60%;
+    position: relative;
+    overflow: hidden;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: -30px;
+    border-radius: 6px;
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.blog-card .blog-card-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    pointer-events: none;
+}
+.blog-card .blog-table {
+    padding: 15px 30px;
+}
+.blog-table {
+    margin-bottom: 0px;
+}
+.blog-category {
+    position: relative;
+    line-height: 0;
+    margin: 15px 0;
+}
+.blog-text-success {
+    color: #28a745!important;
+}
+.blog-card-blog .blog-card-caption {
+    margin-top: 5px;
+}
+.blog-card-caption {
+    font-weight: 700;
+    font-family: "Roboto Slab", "Times New Roman", serif;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.blog-card-caption, .blog-card-caption a {
+    color: #333;
+    text-decoration: none;
+}
+
+p {
+    color: #3C4857;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.blog-card .ftr {
+    margin-top: 15px;
+}
+.blog-card .ftr .author {
+    color: #888;
+}
+
+.blog-card .ftr div {
+    display: inline-block;
+}
+.blog-card .author .avatar {
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 5px;blog-
+}
+.blog-card .ftr .stats {
+    position: relative;
+    top: 1px;
+    font-size: 14px;
+}
+.blog-card .ftr .stats {
+    float: right;
+    line-height: 30px;
+}
+
+.flotante{
+	position: fixed;
+	right: 10px;
+	top: 80px;
+	z-index:1000;
+	margin-bottom: 0;
+	opacity: 0.5;
+}
+
+.flotante:hover{
+	opacity: 1;
+}
+.flotante2{
+	position: fixed;
+	left: 10px;
+	top: 80px;
+	z-index:1000;
+	margin-bottom: 0;
+	opacity: 0.5;
+}
+
+.flotante2:hover{
+	opacity: 1;
+}
 </style>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="<?php echo base_url('asset/clientes/img/slider/Slide1.jpg')?>" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?php echo base_url('asset/clientes/img/slider/Slide2.jpg')?>" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?php echo base_url('asset/clientes/img/slider/Slide3.jpg')?>" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-<div class="row" style="height: 10vh;">
-	<div class="col-md-4" style="background: #f4f4f4">
-		Compras seguras<br>
-		Tu datos de pago estarán bajo alta seguridad
-	</div>
-	<div class="col-md-4" style="background: #f4f4f4">
-		Envios Nacionales<br>
-		Compra en linea y recibe en la puerta de tu casa
-	</div>
-	<div class="col-md-4" style="background: #f4f4f4">
-		PROMOCIONES ÚNICAS<br>
-		Tu datos de pago estarán bajo alta seguridad
-	</div>
-</div>
-
-<section class="col-md-12" style="padding: 2%">
-	<h3>Categorías destacadas</h3>
-	<div class="row">
-		<div class="col-md-4">
-      		<img src="<?php echo base_url('asset/clientes/img/slider/Slide1.jpg')?>" style="height: 23.5em;">
-		</div>
-		<div class="col-md-4">
-			<img src="<?php echo base_url('asset/clientes/img/slider/Slide1.jpg')?>" style="height: 11.2rem; margin-bottom: 4%; width: 26rem;">
-			<img src="<?php echo base_url('asset/clientes/img/slider/Slide1.jpg')?>" style="height: 11.2rem; margin-bottom: 4%; width: 26rem;">
-		</div>
-		<div class="col-md-4">
-			<img src="<?php echo base_url('asset/clientes/img/slider/Slide1.jpg')?>" style="height: 23.5em;">
-		</div>
-	</div>
-</section>
-
-<section class="col-md-12" style="padding: 2%">
-	<div class="col-md-12" style="margin-left: 12px">
-		<div class="card">
-			<div class="card-header">
-				Ofertas del día
+<br><br><br><br>
+<div class="container">
+	<button class="btn btn-success flotante"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+	<button class="btn btn-success flotante2"><i class="fa fa-filter" aria-hidden="true"></i></button>
+	<div class="row" id="contenido">
+		<!--
+    	<div class="col-md-4">
+  			<div class="blog-card blog-card-blog">
+				<div class="blog-card-image">
+					<a href="#"> <img class="img" src="https://picsum.photos/id/1084/536/354?grayscale"> </a>
+					<div class="ripple-cont"></div>
+				</div>
+				<div class="blog-table">
+					<h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> </h6>
+					<h4 class="blog-card-caption">
+						<a href="#">Promo plato misto</a>
+					</h4>
+					<p class="blog-card-description">Plato arabe compuesto  de arroz de almendra, 2 hojas de parra.</p>
+					<div class="ftr">
+						<div class="author">
+							<p class="pull-left">$200.000</p>
+							
+						</div>
+						<p class="pull-right"><del>$300.000</del></p>
+					</div>
+				</div>
 			</div>
-			<div class="card-body">
-				<center>No hay productos en oferta el día de hoy</center>
-			</div>
-		</div>
-
-		<div class="card mt-4">
-			<div class="card-header">
-				Más comprados a crédito
-			</div>
-			<div class="card-body">
-				<div class="col-md-4"> 
-                    <div class="intro-item">
-                    	<center>
-	                        <figure>
-	                            <img src="<?php echo base_url('asset/clientes/img/slider/Slide1.jpg')?>" alt="#" width="200" height="200" class="border_radius">
-	                        </figure>
-
-	                        <div class="product-info">
-	                            <h5>Samsung</h5>
-	                            <p class="art_descrip">oferta pago inmediato</p>
-	                            <p class="art_descrip">$40.000</p>
-	                        </div>
-                        </center>
-                    </div>
-    			</div>
-			</div>
-		</div>
+		</div> -->
 
 	</div>
-	
-</section>
 
-<section class="product-section spad">
-    <input type="hidden" id="NewGuid" value="" />
-    <div class="container">
-        <ul class="product-filter controls">
-            <li class="control" data-filter=".NEW">Nueva coleccion</li>
-            <li class="control" data-filter="all">Recomendados</li>
-            <li class="control" data-filter=".BEST">Mas vendidos</li>
-            <li class="control" data-filter=".SALE">Promociones</li>
-        </ul>
-        <div class="row" id="product-filter">
-            <div class="col-md-4"> 
-                <div class="intro-item">
-                	<center>
-                        <figure>
-                            <img src="<?php echo base_url('asset/clientes/img/slider/Slide1.jpg')?>" alt="#" width="200" height="200" class="border_radius">
-                        </figure>
+	</div>
+	<!-- Modal -->
+	<div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
 
-                        <div class="product-info">
-                            <h5>Samsung</h5>
-                            <p class="art_descrip">oferta pago inmediato</p>
-                            <p class="art_descrip">$40.000</p>
-                        </div>
-                    </center>
-                </div>
-			</div>
-    	</div>
-</section>
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel2">Right Sidebar</h4>
+				</div>
+
+				<div class="modal-body">
+					<p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+					</p>
+				</div>
+
+			</div><!-- modal-content -->
+		</div><!-- modal-dialog -->
+	</div><!-- modal -->
+
+	<script>
+		var urlInicio  = "<?php echo site_url('clientes/ControladorInicio/todo')?>";
+		var url  = "<?php echo base_url('')?>";
+	</script>
+
+	<script src="<?php echo base_url('asset/clientes/ajax/todosproductos.js')?>" type="text/javascript"></script>
