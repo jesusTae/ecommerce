@@ -31,10 +31,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body style="overflow-x: hidden;">
     <nav class="navbar navbar-expand-lg navbar-ligth primary-color menu" style="position: fixed;z-index: 1000;width: 100%;background-color:rgb(255, 255, 255) !important;">
 
-        <a class="navbar-brand" href="<?php echo site_url('Page'); ?>">Globalsoft</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="navbar-brand" href="<?php echo site_url('/'); ?>">Globalsoft</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
                 aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,9 +59,7 @@
                     
                     <a class="card-bag" href="" id="user"><img style="cursor: -webkit-grab; cursor: grab;" src="<?php echo base_url('asset/clientes/img/icons/login.png')?>" alt="">Mi Cuenta<a id="user_log" style="color:white;cursor:pointer"></a></a>&nbsp;&nbsp;&nbsp;
                 </li>
-                <li class="nav-item">
-                    <a href="<?php echo site_url('Page'); ?>" class="card-bag" id="bag"><img style="cursor: -webkit-grab; cursor: grab;" src="~/img/icons/login.png" alt=""></a>&nbsp;&nbsp;&nbsp;
-                </li>
+                        
                 <li class="nav-item">
                     <a class="card-bag" href="<?php echo site_url('Login/logout');?>"><img style="cursor: -webkit-grab; cursor: grab;" src="<?php echo base_url('asset/clientes/img/icons/bag.png')?>" alt="">cerrar sesion<span id="Cart_Count" class="span_bag">0</span></a>
                 </li>
