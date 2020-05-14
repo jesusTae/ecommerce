@@ -12,10 +12,10 @@ $(document).ready(function(){
             {
                 for(i=0; i<data.length; i++)
                 {  
-                    html += `<div class="col-md-4" style="cursor:pointer;">
+                    html += `<div class="col-md-3" style="cursor:pointer;">
                         <div class="blog-card blog-card-blog">
                             <div class="blog-card-image text-center">
-                                <a href="#"> <img class="img" src="`+url+data[i].imageurl+`" style=" width: 320px; height:200px;"> </a>
+                                <a href="#"> <img class="img" src="`+url+data[i].imageurl+`" style=" width: 200px; height:150px;"> </a>
                                 <div class="ripple-cont"></div>
                             </div>
                             <div class="blog-table">
@@ -23,7 +23,7 @@ $(document).ready(function(){
                                 <h4 class="blog-card-caption">
                                     <a href="#" class="text-success">`+data[i].nomart+`</a>
                                 </h4>
-                                <p class="blog-card-description">`+data[i].descripción.substr(0,100)+`...</p>
+                                <p class="blog-card-description">`+data[i].descripción.substr(0,70)+`...</p>
                                 <div class="ftr">
                                     <div class="author">
                                         <p class="pull-left text-success">$`+Intl.NumberFormat('de-DE').format(data[i].valart)+`</p>
