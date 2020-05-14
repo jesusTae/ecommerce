@@ -25,6 +25,7 @@ class Page extends CI_Controller
       elseif($this->session->userdata('tipo_usuario')==='2')
       {
           $this->load->view('clientes/componentes/header');
+          $this->load->view('clientes/componentes/menu');
           $this->load->view('clientes/welcome');
           $this->load->view('clientes/componentes/footer');
       }
