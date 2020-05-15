@@ -4,7 +4,7 @@
 <title>Trekking a Ecommerce Category Flat Bootstarp Responsive Website Template | Products :: w3layouts</title>
 <link href="<?php echo base_url('asset/clientes/css/bootstrap.css') ?>" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
+<script src="<?php echo base_url('asset/clientes/js/jquery-3.2.1.min.js') ?>"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
 <link href="<?php echo base_url('asset/clientes/css/style.css') ?>" rel="stylesheet" type="text/css" media="all" />	
