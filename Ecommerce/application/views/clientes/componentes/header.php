@@ -9,9 +9,65 @@
     <link rel="stylesheet" href="<?php echo base_url('asset/clientes/css/bootstrap.min.css') ?>">
     <!-- AWESOME4 -->
     <link rel="stylesheet" href="<?php echo base_url('asset/clientes/font-awesome-4.7.0/css/font-awesome.min.css') ?>">
+    <link href="<?php echo base_url('asset/administrativo/css/alertify.css');?>" rel="stylesheet">
+    <link href="<?php echo base_url('asset/administrativo/css/themes/semantic.css');?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url('asset/clientes/css/styles.css') ?>">
+    <link href="<?php echo base_url('asset/administrativo/css/dataTables.bootstrap4.min.css');?>" rel="stylesheet">
     <title>ECOMMERCE</title>
     <script src="<?php echo base_url('asset/administrativo/lib/jquery/jquery.min.js')?>"></script>
   </head>
+  <style>
+  .table tfoot input{
+        width: 100% !important;
+    }
+    .table tfoot {
+        display: table-header-group !important;
+    }
+    .scroll_text{
+        height:200px;
+        overflow:auto;
+        padding:0px 15px;
+    }
+
+    .scroll_text::-webkit-scrollbar {  
+        width: 8px;  
+    }  
+
+    .scroll_text::-webkit-scrollbar-track {  
+        background-color: #ffffff
+    }  
+    .scroll_text::-webkit-scrollbar-thumb {  
+      background-color: #224F22;
+      border: 1px solid #224F22;
+      border-radius: 10px;
+    }  
+    .scroll_text::-webkit-scrollbar-thumb:hover {  
+          -color: #000;  
+    }  
+
+    .scroll_text2{
+        height:450px;
+        overflow:auto;
+        padding:0px 15px;
+    }
+
+    .scroll_text2::-webkit-scrollbar {  
+        width: 8px;  
+    }  
+    .scroll_text2::-webkit-scrollbar-track {  
+        background-color: #ffffff
+    }  
+    .scroll_text2::-webkit-scrollbar-thumb {  
+        background-color: #224F22;
+        border: 1px solid #224F22;
+        border-radius: 10px;
+    }  
+    .scroll_text2::-webkit-scrollbar-thumb:hover {  
+        background-color: #000;  
+    }
+
+    
+</style>
   <body>
   
 

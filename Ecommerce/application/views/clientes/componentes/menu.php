@@ -20,7 +20,7 @@
       
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrito</a>
+                <a class="nav-link totalCarritoBtn" href="#"><span class="badge badge-light totalCarrito"></span> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrito</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="<?php echo site_url('Login/logout');?>" tabindex="-1" aria-disabled="true"><i class="fa fa-power-off" aria-hidden="true"></i> Cerrar sesion</a>
