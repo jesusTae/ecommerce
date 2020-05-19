@@ -13,10 +13,10 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar....." aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Bucar</button>
-        </form>
+        <div class="form-inline">
+            <input class="form-control mr-sm-2" id="busquedaGeneral" type="text" placeholder="Buscar.....">
+            <button class="btn btn-outline-success my-2 my-sm-0" id="btnBusquedaGeneral" type="button"><i class="fa fa-search" aria-hidden="true"></i> Bucar</button>
+        </div>
       
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">

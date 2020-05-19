@@ -1,9 +1,44 @@
-
-<br><br><br><br>
+<br><br><br>
+<style>
+.btn-minus{cursor:pointer;font-size:7px;display:flex;align-items:center;padding:5px;padding-left:10px;padding-right:10px;border:1px solid gray;border-radius:2px;border-right:0;}
+.btn-plus{cursor:pointer;font-size:7px;display:flex;align-items:center;padding:5px;padding-left:10px;padding-right:10px;border:1px solid gray;border-radius:2px;border-left:0;}
+div.section > div {width:100%;display:inline-flex;}
+div.section > div > input {margin:0;padding-left:5px;font-size:10px;padding-right:5px;max-width:18%;text-align:center;}
+</style>
 <div class="container">
 	<button class="btn btn-success flotante totalCarritoBtn"><span class="badge badge-light totalCarrito"></span> <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
 	<button class="btn btn-success flotante2"><i class="fa fa-filter" aria-hidden="true"></i></button>
-	
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img class="d-block w-100" src="http://placekitten.com/1600/600" alt="First slide">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>Titulo</h5>
+					<p>contenido</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img class="d-block w-100" src="http://placekitten.com/1600/600" alt="Second slide">
+			</div>
+			<div class="carousel-item">
+				<img class="d-block w-100" src="http://placekitten.com/1600/600" alt="Third slide">
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+	<br><br>
 	<div class="row" id="contenido"></div>
 	<div class="row" id="paginacion"></div>
 
@@ -20,9 +55,17 @@
 				</button>
 			</div>
 			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<h4>Total: $<span id="sumTotalCarrito"></span></h4>
+					</div>
+					<div class="col-md-6">
+						<button class="btn btn-outline-success pull-right" id="btnComprar" type="button"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Comprar</button>
+					</div>
+				</div>
+
 				<div class="table-responsive">
-					<h4>Total: $<span id="sumTotalCarrito"></span></h4>
-                    <table class="table table-sm  table-bordered" id="tablaCarrito">
+					<table class="table table-sm  table-bordered" id="tablaCarrito">
                         <thead>
                             <tr>
                                 <th>Imagen</th>
@@ -72,14 +115,18 @@
 							</h3>
 							<div class="space-ten"></div>
 								<div class="btn-ground">
-									<form class="form-inline">
-										<div class="form-group mb-2">
-											<input class="form-control" type="number" value="1" id="undProducto">
+									<div class="section" style="padding-bottom:20px;">
+										<h6 class="title-attr"><small>CANTIDAD</small></h6>                    
+										<div>
+											<div class="btn-minus btn btn-success"><span class="fa fa-minus"></span></div>
+											<input class="form-control"  id="undProducto" value="1">
 											<input class="form-control" type="hidden" id="idProducto">
 											<input class="form-control" type="hidden" id="precioProducto2">
-											<button type="button" class="btn btn-outline-success" id="addCarrito"><span class="fa fa-shopping-cart"></span> Agregar</button>
+											<div class="btn-plus btn btn-success"><span class="fa fa-plus"></span></div>
 										</div>
-									</form>
+										<br><br>
+										<button type="button" class="btn btn-outline-success" id="addCarrito"><span class="fa fa-shopping-cart"></span> Agregar</button>
+									</div>
 								</div>
 							</div>
                			</div>

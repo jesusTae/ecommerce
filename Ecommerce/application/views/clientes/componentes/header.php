@@ -15,6 +15,8 @@
     <link href="<?php echo base_url('asset/administrativo/css/dataTables.bootstrap4.min.css');?>" rel="stylesheet">
     <title>ECOMMERCE</title>
     <script src="<?php echo base_url('asset/administrativo/lib/jquery/jquery.min.js')?>"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
   </head>
   <style>
   .table tfoot input{

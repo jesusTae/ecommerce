@@ -2,6 +2,31 @@ $(document).ready(function(){
     
     todoArticulos();
     verUndCarrito();
+
+    //-- Click on QUANTITY
+    $(".btn-minus").on("click",function(){
+        var now = $(".section > div > #undProducto").val();
+        if ($.isNumeric(now)){
+            if (parseInt(now) -1 > 0){ now--;}
+            $(".section > div > #undProducto").val(now);
+        }else{
+            $(".section > div > #undProducto").val("1");
+        }
+    });
+
+    $(".btn-plus").on("click",function(){
+        var now = $(".section > div > #undProducto").val();
+        if ($.isNumeric(now)){
+            $(".section > div > #undProducto").val(parseInt(now)+1);
+        }else{
+            $(".section > div > #undProducto").val("1");
+        }
+    });
+    
+    alertify.defaults.transition = "slide";
+    alertify.defaults.theme.ok = "btn btn-primary";
+    alertify.defaults.theme.cancel = "btn btn-danger";
+    alertify.defaults.theme.input = "form-control";
    
 });
  //LLAMADO A TODOS LOS PRODUCTOS A PANATALLA
@@ -9,11 +34,13 @@ function todoArticulos(){
    
     $('#contenido').html('<div id="loading" style="" ></div>');
 
-    var minimo = $('#manimoF').val();
-    var maximo = $('#maximoF').val();
-    var categoria = get_filter('categoriasF');
+    var busquedaGeneral = $('#busquedaGeneral').val();
+    var minimo          = $('#manimoF').val();
+    var maximo          = $('#maximoF').val();
+    var categoria       = get_filter('categoriasF');
 
     var formData = new FormData();
+    formData.append('busquedaGeneral',busquedaGeneral );
     formData.append('minimo',minimo );
     formData.append('maximo',maximo );
     formData.append('categoria',categoria );
@@ -32,7 +59,7 @@ function todoArticulos(){
             {
                 for(i=0; i<data.length; i++)
                 {  
-                    html += `<div class="col-md-3 verProductosClick jar" style="cursor:pointer;"
+                    html += `<div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 verProductosClick jar" style="cursor:pointer;"
                                 data-product_code="`+data[i].id+`"
                                 data-product_code1="`+data[i].imageurl+`"
                                 data-product_code2="`+data[i].categoria+`"
@@ -192,8 +219,9 @@ function todoArticulos(){
                             $("html,body").animate({ scrollTop: 0 }, 0);
                         });
                 });
-            }else{
-                $('.verProductosClick').html(`<div class="col-md-12">
+            }else{  
+                $('#paginacion').html('');
+                $('#contenido').html(`<div class="col-md-12">
                     <div class="alert alert-danger" role="alert">
                         <h4 class="alert-heading"><i class="fa fa-search-minus" aria-hidden="true"></i> No se encontro el filtro</h4>
                         <p>No encontramos lo q estas buscando.</p>
@@ -216,6 +244,16 @@ function get_filter(class_name)
     });
     return filter;
 }
+
+$('#btnBusquedaGeneral').click(function(){
+    todoArticulos();
+});
+
+$('#busquedaGeneral').on('keypress',function(e) {
+    if(e.which == 13) {
+        todoArticulos();
+    }
+});
 
 $('.common_selector').click(function(){
     todoArticulos();
@@ -301,7 +339,7 @@ $('#addCarrito').on('click',function(){
     formData.append('id',id );
     formData.append('und',und );
     formData.append('precio',precio );
-
+/*
     alertify.confirm('<h3 class="text-center fa fa-hdd-o"> Guardar</h3>', '<h6 class="text-center">deseas gregar este articulo <strong>'+nombre+'</strong> al carrito de compra</h6>', function(){ 
 
         $.ajax({
@@ -318,7 +356,40 @@ $('#addCarrito').on('click',function(){
             }
         });
     }
-    , function(){ alertify.error('Operacion Cancelada')});
+    , function(){ alertify.error('Operacion Cancelada')});*/
+
+    $.confirm({
+        title: 'Mensaje!',
+        content: 'Deseas agrega al carro de compra <strong>'+nombre+'</strong>!',
+        buttons: {
+            SI: {
+                btnClass: 'btn btn-outline-success',
+                action: function () {
+                    $.ajax({
+                        type : "POST",
+                        url  :  urlGuardarCarrito ,
+                        dataType : "JSON",
+                        data : formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(data){
+                            verUndCarrito();
+                            $('#ModalVerProductos').modal('hide');
+                           
+                        }
+                    });
+                }
+            },
+            
+            NO: {
+                btnClass: 'btn btn-outline-danger',
+                action: function () {
+                    alertify.error('Operacion Cancelada');
+                }
+            }
+        }
+    });
+
   
 });
 
@@ -431,7 +502,7 @@ $('#tablaCarrito').on('click','#eliminarCarrito',function(){
     formData.append('articulo',articulo );
     formData.append('total',total );
 
-   
+   /*
     alertify.confirm('<h3 class="text-center fa fa-trash-o"> Eliminar</h3>', '<h6 class="text-center">Deseas quitar a '+nombre+'</h6>', function(){ 
 
             $.ajax({
@@ -447,7 +518,39 @@ $('#tablaCarrito').on('click','#eliminarCarrito',function(){
                 }
             });
     }
-    , function(){ alertify.error('Operacion Cancelada')});
+    , function(){ alertify.error('Operacion Cancelada')});*/
+
+    $.confirm({
+        title: 'Eliminar!',
+        content: 'Deseas quitar a <strong>'+nombre+'</strong>!',
+        buttons: {
+                SI: {
+                    btnClass: 'btn btn-outline-success',
+                    action: function () {
+                        $.ajax({
+                            type : "POST",
+                            url  :  urleliminarCarrito ,
+                            dataType : "JSON",
+                            data : formData,
+                            contentType: false,
+                            processData: false,
+                            success: function(data){
+                                verUndCarrito();
+                                $('#verModalCarrito').modal('hide');
+                            }
+                        });
+                    }
+                },
+                
+                NO: {
+                    btnClass: 'btn btn-outline-danger',
+                    action: function () {
+                        alertify.error('Operacion Cancelada');
+                    }
+                }
+            
+        }
+    });
 
 });
 
@@ -455,6 +558,53 @@ $('#tablaCarrito').on('click','#eliminarCarrito',function(){
 $('.flotante2').on('click',function(){
 
     $('#modalFiltro').appendTo("body").modal('show');
+
+});
+
+//COMPRAR
+$('#btnComprar').on('click',function(){
+
+    var totalCarrito = $("#sumTotalCarrito").text();
+
+    if(totalCarrito <= 0){
+        $.alert({
+            title: 'Alerta!',
+            content: '<h6 class="text-center">El monto total es cero debe elegir productos!</h6>',
+            buttons: {
+                CERRAR: {
+                    btnClass: 'btn btn-outline-danger',
+                    action: function () {}
+                }
+            }
+        });
+
+        return false;
+    }else{
+        
+        $.confirm({
+            title: 'Mensaje!',
+            content: 'Deseas comprar todo lo que se encuentra en su carrito de compra?',
+            buttons: {
+                    SI: {
+                        btnClass: 'btn btn-outline-success',
+                        action: function () {
+                            alertify.error('Felicidades');
+                        }
+                    },
+                    
+                    NO: {
+                        btnClass: 'btn btn-outline-danger',
+                        action: function () {
+                            alertify.error('Operacion Cancelada');
+                        }
+                    }
+                
+            }
+        });
+
+    }
+
+
 
 });
 
