@@ -3,14 +3,12 @@
 <div class="container">
 	<button class="btn btn-success flotante totalCarritoBtn"><span class="badge badge-light totalCarrito"></span> <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
 	<button class="btn btn-success flotante2"><i class="fa fa-filter" aria-hidden="true"></i></button>
-	<div class="row" id="contenido">
 	
-	</div>
-	<div class="col-md-12 text-center">
-		<ul class="pagination pagination-lg pager" id="developer_page"></ul>
-	</div>
+	<div class="row" id="contenido"></div>
+	<div class="row" id="paginacion"></div>
 
-	</div>
+
+</div>
 	<!-- Modal -->
 	<div class="modal" id="verModalCarrito" tabindex="-1" role="dialog">
 		<div class="modal-dialog modal-lg">
