@@ -19,4 +19,10 @@ class ControladorInicio extends CI_Controller
 		echo json_encode($data);
 	}
 
+	public function slaider()
+	{
+		$data=$this->ModeloInicio->getslaider();
+		echo json_encode($data);
+	}
+
 }

@@ -1,43 +1,26 @@
 <br><br><br>
-<style>
-.btn-minus{cursor:pointer;font-size:7px;display:flex;align-items:center;padding:5px;padding-left:10px;padding-right:10px;border:1px solid gray;border-radius:2px;border-right:0;}
-.btn-plus{cursor:pointer;font-size:7px;display:flex;align-items:center;padding:5px;padding-left:10px;padding-right:10px;border:1px solid gray;border-radius:2px;border-left:0;}
-div.section > div {width:100%;display:inline-flex;}
-div.section > div > input {margin:0;padding-left:5px;font-size:10px;padding-right:5px;max-width:18%;text-align:center;}
-</style>
 <div class="container">
 	<button class="btn btn-success flotante totalCarritoBtn"><span class="badge badge-light totalCarrito"></span> <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
 	<button class="btn btn-success flotante2"><i class="fa fa-filter" aria-hidden="true"></i></button>
+
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-		<ol class="carousel-indicators">
-			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		<ol class="carousel-indicators" id="slaider">
+			
 		</ol>
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img class="d-block w-100" src="http://placekitten.com/1600/600" alt="First slide">
-				<div class="carousel-caption d-none d-md-block">
-					<h5>Titulo</h5>
-					<p>contenido</p>
-				</div>
-			</div>
-			<div class="carousel-item">
-				<img class="d-block w-100" src="http://placekitten.com/1600/600" alt="Second slide">
-			</div>
-			<div class="carousel-item">
-				<img class="d-block w-100" src="http://placekitten.com/1600/600" alt="Third slide">
-			</div>
+		<div class="carousel-inner"  id="slaider2">
+			
 		</div>
+	
 		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
+			<span class="sr-only ">Previous</span>
 		</a>
 		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="carousel-control-next-icon text-dark" aria-hidden="true"></span>
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
+
 	<br><br>
 	<div class="row" id="contenido"></div>
 	<div class="row" id="paginacion"></div>
@@ -181,7 +164,7 @@ div.section > div > input {margin:0;padding-left:5px;font-size:10px;padding-righ
 							 	foreach ($consulta->result() as $row): 
 							?>
 								<label class="form-check">
-									<input class="form-check-input common_selector categoriasF" type="checkbox" value="<?= $row->id?>">
+									<input class="form-check-input common_selector categoriasF" type="checkbox" name="categoriasF<?= $row->id?>" value="<?= $row->id?>">
 									<span class="form-check-label">
 										<?= $row->nomgru?>
 									</span>
@@ -205,6 +188,7 @@ div.section > div > input {margin:0;padding-left:5px;font-size:10px;padding-righ
 		var urlTotalCarrito  	= "<?php echo site_url('clientes/ControladorCarrito/total')?>";
 		var urlTodoCarrito  	= "<?php echo site_url('clientes/ControladorCarrito/todo')?>";
 		var urleliminarCarrito  = "<?php echo site_url('clientes/ControladorCarrito/eliminar')?>";
+		var urlSlaider  		= "<?php echo site_url('clientes/ControladorInicio/slaider')?>";
 	</script>
 
 	<script src="<?php echo base_url('asset/clientes/ajax/principal/principal.js')?>" type="text/javascript"></script>

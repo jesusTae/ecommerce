@@ -1,7 +1,10 @@
 $(document).ready(function(){
-    
+
+    slaiderfun();
     todoArticulos();
     verUndCarrito();
+    var Vtbl = '';
+    var Vdescripcion = '';
 
     //-- Click on QUANTITY
     $(".btn-minus").on("click",function(){
@@ -29,7 +32,51 @@ $(document).ready(function(){
     alertify.defaults.theme.input = "form-control";
    
 });
- //LLAMADO A TODOS LOS PRODUCTOS A PANATALLA
+ //LLAMADO A EL CAROUSEL
+function slaiderfun(){
+   
+    $.ajax({
+        type : "POST",
+        url  : urlSlaider,
+        dataType : "JSON",
+        data : {},
+        contentType: false,
+        processData: false,
+        success: function(data){
+            var html    = '';
+            var html2   = '';
+            var active  = '';
+            var i;
+            if(data != 0)
+            {
+                for(i=0; i<data.length; i++)
+                {  
+                    if(data[i].p_id  == 1){ active = "active"}else{active = ""}
+                    html  += `   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="`+active+`"></li>`;
+                    html2 += `  <div class="carousel-item `+active+`">
+                                    <img class="d-block w-100" src="`+url+data[i].p_img+`" alt="First slide" id="buscarSlider"
+                                    data-product_code   =   "`+data[i].p_tbl+`"
+                                    data-product_code1  =   "`+data[i].p_elegido+`"
+                                    data-product_code2  =   "`+data[i].descripcion+`">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5></h5>
+                                        <p></p>
+                                    </div>
+                                </div>`;
+                }
+
+                $('#slaider').html(html);
+                $('#slaider2').html(html2);
+            }else{  
+                $('#slaider').html('');
+                $('#slaider2').html('');
+            }
+        }
+    });
+
+}
+
+//LLAMADO A TODOS LOS PRODUCTOS A PANATALLA
 function todoArticulos(){
    
     $('#contenido').html('<div id="loading" style="" ></div>');
@@ -244,6 +291,47 @@ function get_filter(class_name)
     });
     return filter;
 }
+
+
+$('#slaider2').on('click','#buscarSlider',function(){
+ 
+    var tbl         = $(this).data('product_code');
+    var elegido     = $(this).data('product_code1');
+    var nombre      = $(this).data('product_code2');
+    
+    $.confirm({
+        title: 'Buscar!',
+        content: 'Deseas buscar esta promocion?',
+        buttons: {
+                SI: {
+                    btnClass: 'btn btn-outline-success',
+                    action: function () {
+                        if(tbl == 1){
+                            $("#busquedaGeneral").val('');  
+                            $(".categoriasF").prop("checked",false);  
+                            $('[name=categoriasF'+elegido+']').prop("checked",true   );
+                            todoArticulos();
+                          
+                        }else{
+                    
+                            $(".categoriasF").prop("checked",false); 
+                            $("#busquedaGeneral").val(nombre);  
+                            todoArticulos();
+                        }
+                    }
+                },
+                
+                NO: {
+                    btnClass: 'btn btn-outline-danger',
+                    action: function () {
+                        alertify.error('Operacion Cancelada');
+                    }
+                }
+            
+        }
+    });
+    
+});
 
 $('#btnBusquedaGeneral').click(function(){
     todoArticulos();

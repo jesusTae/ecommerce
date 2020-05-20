@@ -193,6 +193,15 @@
               <li><a href="<?php echo site_url('administrativo/ControladorArticulos');?>">Articulos</a></li>
             </ul>
           </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-list"></i>
+              <span>Promociones</span>
+            </a>
+            <ul class="sub">
+              <li><a href="<?php echo site_url('administrativo/ControladorPromociones');?>">Promociones</a></li>
+            </ul>
+          </li>
           <li>
             <a href="<?php echo site_url('administrativo/ControladorUsuarios');?>">
               <i class="fa fa-user-circle-o"></i>

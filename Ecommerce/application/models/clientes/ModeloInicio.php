@@ -34,4 +34,14 @@ class ModeloInicio extends CI_Model
         return $rest->result();
        
     }
+
+    function getslaider()
+    {
+        $this->db->select(' p.*,
+                            IF(p.p_tbl=2,(SELECT nomart FROM tbl_articulos WHERE id = p.p_elegido),(SELECT nomgru FROM tbl_categorias WHERE id = p.p_elegido)) AS descripcion,');
+        $this->db->from('tbl_promociones p');
+        $this->db->where('p.p_estado',1);
+        $rest=$this->db->get();
+        return $rest->result();
+    }
 }
