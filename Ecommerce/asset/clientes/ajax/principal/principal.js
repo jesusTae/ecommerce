@@ -333,6 +333,35 @@ $('#slaider2').on('click','#buscarSlider',function(){
     
 });
 
+$('#quitarfiltro').click(function(){
+
+    $.confirm({
+        title: 'Quitar filtro!',
+        content: 'Deseas Quitar el filtro?',
+        buttons: {
+                SI: {
+                    btnClass: 'btn btn-outline-success',
+                    action: function () {
+                     
+                        $("#busquedaGeneral").val('');  
+                        $(".categoriasF").prop("checked",false);  
+                        todoArticulos();
+                       
+                    }
+                },
+                
+                NO: {
+                    btnClass: 'btn btn-outline-danger',
+                    action: function () {
+                        alertify.error('Operacion Cancelada');
+                    }
+                }
+            
+        }
+    });
+   
+});
+
 $('#btnBusquedaGeneral').click(function(){
     todoArticulos();
 });

@@ -1,7 +1,16 @@
 <br><br><br>
 <div class="container">
-	<button class="btn btn-success flotante totalCarritoBtn"><span class="badge badge-light totalCarrito"></span> <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
-	<button class="btn btn-success flotante2"><i class="fa fa-filter" aria-hidden="true"></i></button>
+	<button class="btn btn-success flotante totalCarritoBtn">
+		<span class="badge badge-light totalCarrito"></span> 
+		<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+	</button>
+	<button class="btn btn-success flotante2">
+		<i class="fa fa-filter" aria-hidden="true"></i>
+	</button>
+
+	<button class="btn btn-danger flotante3" id="quitarfiltro" title="Quitar filtro">
+		<i class="fa fa-filter" aria-hidden="true"></i><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>
+	</button>
 
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators" id="slaider">
@@ -24,7 +33,6 @@
 	<br><br>
 	<div class="row" id="contenido"></div>
 	<div class="row" id="paginacion"></div>
-
 
 </div>
 	<!-- Modal -->
