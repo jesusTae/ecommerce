@@ -1,4 +1,24 @@
-
+<style>
+    .kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        text-align: center;
+    }
+    .kv-avatar {
+        display: inline-block;
+    }
+    .kv-avatar .file-input {
+        display: table-cell;
+        width: 213px;
+    }
+    .kv-reqd {
+        color: red;
+        font-family: monospace;
+        font-weight: normal;
+    }
+</style>
 <section id="main-content">
     <section class="wrapper site-min-height content-panel">
         <h3><i class="fa fa-angle-right"></i> Categorias</h3>
@@ -9,6 +29,7 @@
                     <table class="table table-sm  table-bordered" id="tablaCategorias">
                         <thead>
                             <tr>
+                                <th>Image</th>
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Usuario</th>
@@ -16,6 +37,7 @@
                             </tr>
                         </thead>
                         <tfoot>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -44,10 +66,21 @@
         <div class="modal-body scroll_text">
         <form>
             <br>
+            <div class="form-group text-center">
+                <div class="kv-avatar">
+                    <div class="file-loading">
+                        <input id="avatar-2" name="avatar-2" type="file" required>
+                    </div>
+                </div>
+                <div class="kv-avatar-hint">
+                    <small>Select file < 1500 KB</small>
+                </div>
+            </div>
             <div class="form-group">
                 <label>Nombre Categoria</label>
                 <input type="text" class="form-control" name="nomgru" placeholder="Nombre Categoria...">
                 <input type="hidden" class="form-control" name="id" >
+                <input type="hidden" class="form-control" name="urlimg" >
             </div>
             <hr>
             <button type="button" class="btn btn-danger fa fa-trash-o" id="btnEliminarCategorias"> Eliminar</button>
@@ -67,6 +100,7 @@
     var urlCategoriasTabla      = "<?php echo site_url('administrativo/ControladorCategorias/todo')?>";
     var urlCategoriasGuardar    = "<?php echo site_url('administrativo/ControladorCategorias/guardar')?>";
     var urlCategoriasEliminar   = "<?php echo site_url('administrativo/ControladorCategorias/eliminar')?>";
+    var urlCategoriablanco      = "<?php echo base_url()?>";
 </script>
 
 <script src="<?php echo base_url('asset/administrativo/ajax/categorias/todo.js')?>" type="text/javascript"></script>

@@ -18,6 +18,7 @@ class ModeloCategorias extends CI_Model
     {
         $id             =   $this->input->post('id');
         $nomgru         =   $this->input->post('nomgru');
+        $urlimg         =   $this->input->post('urlimg');
 
         $usuario = $this->session->userdata('id_usuario');
         $fecha = date("Y-m-d h:i:s");
@@ -70,6 +71,39 @@ class ModeloCategorias extends CI_Model
             
                 $sql_query=$this->db->where('id', $ultimoId)->update('tbl_categorias', $data);
 
+                //GUARDAR IMAGEN
+
+                if(isset($_FILES["file"]['name'])){
+
+                    $ruta = "asset/administrativo/imgcategoria/"; // la ruta
+                    $nombreimagen = $_FILES["file"]['name'];
+
+                    $info = new SplFileInfo($nombreimagen);
+                    $valores = $info->getExtension();
+
+                    $mi_archivo ='file';
+                    $config['upload_path'] = $ruta;
+                    $config['file_name'] =$ultimoId;
+                    $config['allowed_types'] = "jpg|png|jpeg";
+                    $config['max_size'] = 0;
+                    $config['max_width'] = 0;
+                    $config['max_height'] = 0;
+
+                    $this->load->library('upload', $config);
+
+                    if ($this->upload->do_upload($mi_archivo)) {}
+
+                    $imagen = $ruta.$ultimoId.".".$valores;
+                    $imagennombre = $ultimoId.".".$valores;
+
+                    $data1=array(
+                        'img'=>$imagen,
+                        'nombreimg'=>$imagennombre,
+                    );
+                
+                    $sql_query=$this->db->where('id',$ultimoId)->update('tbl_categorias', $data1);
+                }
+
                 return 0;
             }
         }else{
@@ -81,6 +115,46 @@ class ModeloCategorias extends CI_Model
             );
         
             $sql_query=$this->db->where('id', $id)->update('tbl_categorias', $data);
+
+            if(isset($_FILES["file"]['name'])){
+
+                $ruta = "asset/administrativo/imgcategoria/"; // la ruta
+                $nombreimagen = $_FILES["file"]['name'];
+                $rutavieja = $urlimg;
+            
+                $info = new SplFileInfo($nombreimagen);
+                $valores = $info->getExtension();
+
+                $mi_archivo ='file';
+                $config['upload_path'] = $ruta;
+                $config['file_name'] =$id;
+                $config['allowed_types'] = "jpg|png|jpeg";
+                $config['max_size'] = 0;
+                $config['max_width'] = 0;
+                $config['max_height'] = 0;
+
+                $this->load->library('upload', $config);
+
+                $exists = is_file( $rutavieja);//verifica si existe la imagen manda un 1 si existe
+
+                if($exists == 1){
+
+                    unlink($rutavieja);//borra la imagen si existe
+        
+                }
+              
+                if ($this->upload->do_upload($mi_archivo)) {}
+
+                $imagen = $ruta.$id.".".$valores;
+                $imagennombre = $id.".".$valores;
+
+                $data1=array(
+                    'img'=>$imagen,
+                    'nombreimg'=>$imagennombre,
+                );
+            
+                $sql_query=$this->db->where('id',$id)->update('tbl_categorias', $data1);
+            }
 
             return 0;
         }

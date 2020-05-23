@@ -1,5 +1,27 @@
 $(document).ready(function(){
 
+    var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' + 
+    'onclick="alert(\'Call your custom code here.\')">' +
+    '<i class="glyphicon glyphicon-tag"></i>' +
+    '</button>'; 
+
+    $("#image").fileinput({
+        overwriteInitial: true,
+        maxFileSize: 1500,
+        showClose: false,
+        showCaption: false,
+        showBrowse: false,
+        browseOnZoneClick: true,
+        removeLabel: '',
+        removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+        removeTitle: 'Cancel or reset changes',
+        elErrorContainer: '#kv-avatar-errors-2',
+        msgErrorClass: 'alert alert-block alert-danger',
+        defaultPreviewContent: '<img src="'+urlArticulosblanco+'asset/administrativo/imgarticulos/imgblanco.png" alt="Your Avatar"><h6 class="text-muted">Click para seleccionar</h6>',
+        layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+        allowedFileExtensions: ["jpg", "png", "gif"]
+    });
+
     $.ajax({
         type : "POST",
         url  : urlArticulosTabla,
@@ -73,8 +95,13 @@ $(document).ready(function(){
                 "columns": [
                     { "data": null,
                         "mRender": function(data, type, full) {
-                           
-                            return '<div class=col-md-12 text-center"><img src="'+urlArticulosblanco+'/'+full.imageurl+'" alt="Imagen del porducto"  class="thumbnail" width="40px" /></div>';
+                            if(full.imageurl !='')
+                            {
+                                return '<div class=col-md-12 text-center"><img src="'+urlArticulosblanco+'/'+full.imageurl+'" alt="Imagen del porducto"  class="thumbnail" width="40px" /></div>';
+                            }else{
+
+                                return '<div class=col-md-12 text-center"><img src="'+urlArticulosblanco+'asset/administrativo/imgarticulos/imgblanco.png" alt="Imagen del porducto"  class="thumbnail" width="40px" /></div>';
+                            }
                         }
                     },
                     { "data": "nomgru"},
@@ -207,13 +234,6 @@ $('#btnGuardarArticulos').on('click',function(){
 
     var formData = new FormData();
     var files =   $('#image')[0].files[0];
-
-   
-    if(files==undefined)
-    {
-        alertify.error('Seleccione una imagen para el articulo');
-        return false;
-    }
 
     formData.append('file',files);
     formData.append('id',id );

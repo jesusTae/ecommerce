@@ -1,4 +1,24 @@
-
+<style>
+    .kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        text-align: center;
+    }
+    .kv-avatar {
+        display: inline-block;
+    }
+    .kv-avatar .file-input {
+        display: table-cell;
+        width: 213px;
+    }
+    .kv-reqd {
+        color: red;
+        font-family: monospace;
+        font-weight: normal;
+    }
+</style>
 <section id="main-content">
     <section class="wrapper site-min-height content-panel">
         <h3><i class="fa fa-angle-right"></i> Articulos</h3>
@@ -50,22 +70,14 @@
         <div class="modal-body scroll_text">
         <form>
             <br>
-            <div class="form-group last">
-                <label class="control-label col-md-3">Importar imagen</label>
-                <div class="col-md-9">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                        <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                            <img src="<?php echo base_url('asset/administrativo/img/imgblanco.png')?>" alt="" />
-                        </div>
-                        <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                        <div>
-                            <span class="btn btn-theme02 btn-file">
-                                <span class="fileupload-new"><i class="fa fa-paperclip"></i> Selecciona imagen</span>
-                                <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                <input type="file" class="default" id="image" name="image"/>
-                            </span>
-                        </div>
+            <div class="form-group text-center">
+                <div class="kv-avatar">
+                    <div class="file-loading">
+                        <input id="image" name="avatar-2" type="file" required>
                     </div>
+                </div>
+                <div class="kv-avatar-hint">
+                    <small>Select file < 1500 KB</small>
                 </div>
             </div>
 

@@ -82,7 +82,7 @@ class ModeloArticulos extends CI_Model
 
                 $ultimoId = $this->db->insert_id();
 
-                if($_FILES["file"]['name']!= "" ){
+                if(isset($_FILES["file"]['name'])){
 
                     $ruta = "asset/administrativo/imgarticulos/"; // la ruta
                     $nombreimagen = $_FILES["file"]['name'];
@@ -131,7 +131,7 @@ class ModeloArticulos extends CI_Model
         
             $sql_query=$this->db->where('id', $id)->update('tbl_articulos', $data);
 
-            if($_FILES["file"]['name']!= "" ){
+            if(isset($_FILES["file"]['name'])){
 
                 $ruta = "asset/administrativo/imgarticulos/"; // la ruta
                 $nombreimagen = $_FILES["file"]['name'];

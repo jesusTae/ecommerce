@@ -27,6 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link href="<?php echo base_url('asset/administrativo/css/alertify.css');?>" rel="stylesheet">
   <link href="<?php echo base_url('asset/administrativo/css/themes/semantic.css');?>" rel="stylesheet">
   <link href="<?php echo base_url('asset/administrativo/lib/bootstrap-fileupload/bootstrap-fileupload.css');?>" rel="stylesheet">
+  <link href="<?php echo base_url('asset/administrativo/css/fileinput.min.css');?>" rel="stylesheet">
 
   <script src="<?php echo base_url('asset/administrativo/lib/jquery/jquery.min.js')?>"></script>
   <script src="<?php echo base_url('asset/administrativo/js/select2.min.js');?>"></script>

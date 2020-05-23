@@ -1,5 +1,27 @@
 $(document).ready(function(){
 
+    var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' + 
+    'onclick="alert(\'Call your custom code here.\')">' +
+    '<i class="glyphicon glyphicon-tag"></i>' +
+    '</button>'; 
+
+    $("#avatar-2").fileinput({
+        overwriteInitial: true,
+        maxFileSize: 1500,
+        showClose: false,
+        showCaption: false,
+        showBrowse: false,
+        browseOnZoneClick: true,
+        removeLabel: '',
+        removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+        removeTitle: 'Cancel or reset changes',
+        elErrorContainer: '#kv-avatar-errors-2',
+        msgErrorClass: 'alert alert-block alert-danger',
+        defaultPreviewContent: '<img src="'+urlCategoriablanco+'asset/administrativo/imgcategoria/imgblanco.png" alt="Your Avatar"><h6 class="text-muted">Click para seleccionar</h6>',
+        layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+        allowedFileExtensions: ["jpg", "png", "gif"]
+    });
+
     $.ajax({
         type : "POST",
         url  : urlCategoriasTabla,
@@ -19,7 +41,7 @@ $(document).ready(function(){
                 },
                 "initComplete": function () {
                      //Apply text search
-                    this.api().columns([0,1,2]).every(function () {
+                    this.api().columns([1,2,3]).every(function () {
                         var title = $(this.footer()).text();
                     
                         $(this.footer()).html('<input type="text" class="form-control "  placeholder="Buscar..." />');
@@ -34,7 +56,7 @@ $(document).ready(function(){
 
                     });
 
-                    this.api().columns([3]).every(function () {
+                    this.api().columns([4]).every(function () {
                         var title = $(this.footer()).text();
                     
                         $(this.footer()).html('<input type="date" class="form-control form-control-sm" placeholder="Buscar..." />');
@@ -51,6 +73,18 @@ $(document).ready(function(){
 
                 },
                 "columns": [
+                    { "data": null,
+                        "mRender": function(data, type, full) {
+                            
+                            if(full.img !='')
+                            {
+                                return '<div class=col-md-12 text-center"><img src="'+urlCategoriablanco+'/'+full.img+'" alt="Imagen del porducto"  class="thumbnail" width="40px" /></div>';
+                            }else{
+                                return '<div class=col-md-12 text-center"><img src="'+urlCategoriablanco+'asset/administrativo/imgcategoria/imgblanco.png" alt="Imagen del porducto"  class="thumbnail" width="40px" /></div>';
+                            }
+                           
+                        }
+                    },
                     { "data": "id"}, 
                     { "data": "nomgru"},
                     { "data": "usuario"},
@@ -74,6 +108,7 @@ $('#btnCreaCategorias').on('click',function(){
 
     $('[name="id"]').val(0);
     $('[name="nomgru"]').val('');
+    $('[name="urlimg"]').val('');
    
     $("#btnEliminarCategorias").addClass("invisible");
 
@@ -84,6 +119,7 @@ $('#btnGuardarCategorias').on('click',function(){
 
     var id       = $('[name="id"]').val();
     var nomgru   = $('[name="nomgru"]').val();
+    var urlimg   =  $('[name="urlimg"]').val();
 
     if(nomgru=="")
     {
@@ -93,8 +129,11 @@ $('#btnGuardarCategorias').on('click',function(){
     }
 
     var formData = new FormData();
+    var files =   $('#avatar-2')[0].files[0];
+    formData.append('file',files);
     formData.append('id',id );
     formData.append('nomgru',nomgru );
+    formData.append('urlimg',urlimg );
 
     $.ajax({
         type : "POST",
@@ -122,18 +161,22 @@ $('#btnGuardarCategorias').on('click',function(){
 });
 
 $('#tablaCategorias tbody').on('click','tr',function() {
-       
-    var data = table.row( $(this) ).data();
+    
+        var data = table.row( $(this) ).data();
 
-    var id = data.id  ;
-    var nomgru = data.nomgru;
-   
-    $('[name="id"]').val(id);
-    $('[name="nomgru"]').val(nomgru);
+        var id      = data.id  ;
+        var nomgru  = data.nomgru;
+        var urlimg  = data.img;
+    
+        $('[name="id"]').val(id);
+        $('[name="nomgru"]').val(nomgru);
+        $('[name="urlimg"]').val(urlimg);
 
-    $("#btnEliminarCategorias").removeClass("invisible");
+        $("#btnEliminarCategorias").removeClass("invisible");
+    
+        $('#exampleModal').appendTo("body").modal('show');
    
-    $('#exampleModal').appendTo("body").modal('show');
+  
 });
 
 $('#btnEliminarCategorias').on('click',function(){
