@@ -100,7 +100,7 @@ $(document).ready(function(){
                                 return '<div class=col-md-12 text-center"><img src="'+urlArticulosblanco+'/'+full.imageurl+'" alt="Imagen del porducto"  class="thumbnail" width="40px" /></div>';
                             }else{
 
-                                return '<div class=col-md-12 text-center"><img src="'+urlArticulosblanco+'asset/administrativo/imgarticulos/imgblanco.png" alt="Imagen del porducto"  class="thumbnail" width="40px" /></div>';
+                                return '<div class=col-md-12 text-center"><img src="'+urlArticulosblanco+'asset/administrativo/imgarticulos/    .png" alt="Imagen del porducto"  class="thumbnail" width="40px" /></div>';
                             }
                         }
                     },

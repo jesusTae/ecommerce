@@ -100,6 +100,8 @@ class ModeloArticulos extends CI_Model
 
                     $this->load->library('upload', $config);
 
+                    $mi_archivo = simpleresize($mi_archivo, 200, 85);
+
                     if ($this->upload->do_upload($mi_archivo)) {}
 
                     $imagen = $ruta.$ultimoId.".".$valores;
@@ -157,7 +159,8 @@ class ModeloArticulos extends CI_Model
                     unlink($rutavieja);//borra la imagen si existe
         
                 }
-              
+                
+
                 if ($this->upload->do_upload($mi_archivo)) {}
 
                 $imagen = $ruta.$id.".".$valores;

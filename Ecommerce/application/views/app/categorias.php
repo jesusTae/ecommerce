@@ -1,151 +1,7 @@
-<style>
-	.card{
-	width: 250px;
-	height: 350px;
-	background: #f4f4f4;
-	position: relative;
-	border-radius: 10px;
-	box-shadow: 0;
-	transform: scale(0.95);
-	transition: box-shadow .5s ease-in-out,
-				transform .5s ease-in-out;
-	overflow: hidden;
-	font-family: sans-serif;
-}
-.card:hover{
-	transform: scale(1);
-	box-shadow: 5px 20px 30px rgba(0,0,0,.2);
-}
-.imgBox{
-	width: 100%;
-	height: 80%;
-	overflow: hidden;
-}
-.imgBox img{
-	width: 100%;
-	height: 100%;
-}
-.details{
-	position: absolute;
-	width: 100%;
-	height: 50%;
-	background: #f4f4f4be;
-	padding: 10px 20px;
-	bottom: -30%;
-	transition: .5s;
-}
-.details:hover{
-	bottom: 0;
-}
-.textContent{
-	position: relative;
-	margin-top: 10px;
-	color: #555;
-}
-.details .textContent h3{
-	font-size: 20px;
-	padding: 5px 0;
-}
-.price{
-	position: absolute;
-	top: 0;
-	right: 0;
-	font-size: 20px;
-}
-.details h4{
-	font-size: 18px;
-	margin-top: 15px;
-	padding: 10px 0;
-	font-weight: bold;
-	color: #555;
-}
-.details ul{
-	display: flex;
-}
-.details ul li{
-	list-style: none;
-	width: 15px;
-	height: 15px;
-	margin: 5px;
-	cursor: pointer;
-}
-.details ul li:nth-child(1){
-	background: #00f;
-}
-.details ul li:nth-child(2){
-	background: #f00;
-}
-.details ul li:nth-child(3){
-	background: #0ff;
-}
-.details ul li:nth-child(4){
-	background: #ff0;
-}
-.details ul li:nth-child(5){
-	background: #f0f;
-}
-.details button{
-	width: 100%;
-	padding: 5px 0;
-	margin: 10px 0;
-	background: #45b9e0;
-	color: #fff;
-	border-radius: 5px;
-	border: none;
-	outline: none;
-	cursor: pointer;
-}
-.details button:hover{
-	background: #5acef4;
-}
-.description{
-	background: #92879b;
-	position: absolute;
-	width: 140px;
-	height: 140px;
-	top: -70px;
-	right: -70px;
-	border-radius: 0 0 200px 200px;
-	transition: all .5s, border-radius 1s, top 1s;
-}
-.description .icon{
-	position: absolute;
-	top: 85px;
-	right: 85px;
-	color: #fff;
-	opacity: 1;
-}
-.description:hover{
-	width: 100%;
-	height: 80%;
-	right: 0;
-	top: 0;
-	border-radius: 0;
-}
-.description:hover .icon{
-	opacity: 0;
-}
-.description .contents{
-	color: #fff;
-	padding: 5%;
-	transform: scale(0.5);
-	transform: translateY(-200%);
-	transition: opacity .2s, transform .8s;
-	opacity: 0;
-}
-.description:hover .contents{
-	transform: scale(1);
-	opacity: 1;
-	transform: translateY(0);
-}
-.description h2{
-	margin: 20px 0;
-	text-align: center;
-}
-</style>
 <br><br><br>
 <div class="container">
 	<input type="hidden" value="<?= $result ;?>" id="categoriaPost">
+	<input type="hidden" value="<?= $result2 ;?>" id="nombrePost">
 	<div class="text-center">
 		<a href="<?= site_url('app/ControladorInicio'); ?>" class="btn btn-outline-success my-2 my-sm-0" id="btnAtras" ><i class="fa fa-hand-o-left" aria-hidden="true"></i> Volver a Categorias</a>
 	</div>
@@ -162,8 +18,15 @@
 		<i class="fa fa-filter" aria-hidden="true"></i><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>
 	</button>
 
+	<div id="shop_app" class="row">
+        <!-- Start Section Body Part 2 -->
+        <section id="" class="col-12 text-center">
+            <div class="row shop_feature_products" id="contenido">
+			</div>
+        </section>
+        <!-- End Section Body Part 2 -->
+    </div>
 	
-	<div class="row text-center" id="contenido"></div>
 	<div class="row text-center" id="paginacion"></div>
 
 </div>
@@ -223,7 +86,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-md-6 product_img text-center" style="  border-right: 1px solid #28A745;">
+						<div class="col-md-6  text-center" style="  border-right: 1px solid #28A745;">
 							<img src="" class="imagenP" id="urlProducto" >
 						</div>
 						<div class="col-md-6 product_content">

@@ -13,6 +13,7 @@
     <link href="<?php echo base_url('asset/administrativo/css/themes/semantic.css');?>" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('asset/app/css/styles.css') ?>">
     <link href="<?php echo base_url('asset/administrativo/css/dataTables.bootstrap4.min.css');?>" rel="stylesheet">
+    <link href="<?php echo base_url('asset/app/css/card.css');?>" rel="stylesheet">
     <title>ECOMMERCE</title>
     <script src="<?php echo base_url('asset/administrativo/lib/jquery/jquery.min.js')?>"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">

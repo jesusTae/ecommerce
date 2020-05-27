@@ -38,10 +38,11 @@ class ControladorInicio extends CI_Controller
     {
 	
 		$categoria = $this->input->post('categoria');
+		$nombre = $this->input->post('nombre');
 
 		$this->load->view('app/componentes/header');
 		$this->load->view('app/componentes/menu');
-		$this->load->view('app/categorias',['result'=>$categoria]);
+		$this->load->view('app/categorias',['result'=>$categoria,'result2'=>$nombre]);
 		$this->load->view('app/componentes/footer');
     }
 }

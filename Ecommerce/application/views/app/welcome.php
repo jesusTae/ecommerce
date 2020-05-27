@@ -41,28 +41,42 @@
 		</a>
 	</div>
 	<br>
-	<h5>Categorias</h5>
-	<div class="row">
-		<?php 
-		$rest = $this->db->query("SELECT * FROM tbl_categorias WHERE estado = 1");
-		
-		foreach ($rest->result()as $row):
-		?>
-				<div class="col-xs-6 CategoriasVer" style=" margin: 20px; cursor:pointer;" data-product_code="<?= $row->id?>" data-product_code1="<?= $row->nomgru?>">
+	<h5 class="text-center">Categorias</h5>
+
+	<div id="shop_app" class="row">
+        <!-- Start Section Body Part 2 -->
+        <section id="" class="col-12 text-center">
+            <div class="row shop_feature_products" >
+				<?php 
+				$rest = $this->db->query("SELECT * FROM tbl_categorias WHERE estado = 1");
+				
+				foreach ($rest->result()as $row):
+				?>
+				<div class="col-6 CategoriasVer" data-product_code="<?= $row->id?>" data-product_code1="<?= $row->nomgru?>">
 					<form action="<?= site_url('app/ControladorInicio/productos') ?>" method="post" id="formulario<?= $row->id ?>">
-						<div class="card">
-							<img class="card-img-top" src="<?= base_url('').$row->img?>" alt="Card image cap" style="width: 130px; height: 100px;">
-							<div class="text-center">
-							<hr>
-								<strong class="card-text"><?= $row->nomgru ?></strong>
+					<div class="product_featured_tile">
+						<img src="" alt="" class="product_brand">
+						<span class="product_img">
+							<img src="<?= base_url('').$row->img?>" alt="">
+						</span> 
+						<span class="product_title">
+							<?= $row->nomgru ?>
+							<span class="product_cat">
+								UA Select FG
 								<input type="hidden" name="categoria" value="<?= $row->id ?>">
-							</div>
-						</div>
+								<input type="hidden" name="nombre" value="<?= $row->nomgru ?>">
+							</span>
+						</span>  
+						<span class="product_price">
+						</span> 
+					</div>
 					</form>
 				</div>
-				
-		<?php endforeach; ?>
-	</div>
+				<?php endforeach; ?>
+			</div>
+        </section>
+        <!-- End Section Body Part 2 -->
+    </div>
 
 </div>
 	<!-- Modal -->
@@ -107,4 +121,12 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		var urlInicio  			= "<?php echo site_url('app/ControladorInicio/todo')?>";
+		var url  				= "<?php echo base_url('')?>";
+		var urlGuardarCarrito  	= "<?php echo site_url('app/ControladorCarrito/guardar')?>";
+		var urlTotalCarrito  	= "<?php echo site_url('app/ControladorCarrito/total')?>";
+		var urlTodoCarrito  	= "<?php echo site_url('app/ControladorCarrito/todo')?>";
+		var urleliminarCarrito  = "<?php echo site_url('app/ControladorCarrito/eliminar')?>";
+	</script>
 	<script src="<?php echo base_url('asset/app/ajax/principal/principal.js')?>" type="text/javascript"></script>

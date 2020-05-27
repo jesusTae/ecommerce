@@ -42,6 +42,9 @@ function todoArticulos(){
     var maximo          = $('#maximoF').val();
     var categoriaPost   =$('#categoriaPost').val(); 
 
+    //NOMBRE DE LA CATEGORIA ENVIADO POR POST
+    var nombrePost   = $("#nombrePost").val();
+   
     var formData = new FormData();
     formData.append('busquedaGeneral',busquedaGeneral );
     formData.append('minimo',minimo );
@@ -94,34 +97,34 @@ function todoArticulos(){
                         </div>
                     </div>`;*/
                     
-                    html +=  `<div class="card">
-                                <div class="imgBox">
-                                    <img src="`+url+data[i].imageurl+`">
+                    html +=  `
+                            <div class="col-6 verProductosClick jar" style="cursor:pointer;"
+                                        data-product_code="`+data[i].id+`"
+                                        data-product_code1="`+data[i].imageurl+`"
+                                        data-product_code2="`+data[i].categoria+`"
+                                        data-product_code3="`+data[i].codart+`"
+                                        data-product_code4="`+data[i].nomart+`"
+                                        data-product_code5="`+data[i].valart+`"
+                                        data-product_code6="`+data[i].qtyart+`"
+                                        data-product_code7="`+data[i].descripción+`"
+                                        data-product_code8="`+data[i].estado+`">
+                                <div class="product_featured_tile">
+                                    <img src="" alt="" class="product_brand">
+                                    <span class="product_img">
+                                        <img src="`+url+data[i].imageurl+`" alt="">
+                                    </span> 
+                                    <span class="product_title">
+                                        `+data[i].nomart.substr(0,14)+`...
+                                        <span class="product_cat">
+                                        `+ nombrePost +`
+                                        </span>
+                                    </span>  
+                                    <span class="product_price">
+                                        <i class="fa fa-usd"></i> `+Intl.NumberFormat('de-DE').format(data[i].valart)+`
+                                    </span> 
                                 </div>
-                                <div class="details">
-                                    <div class="textContent">
-                                        <h5>`+data[i].nomart.substr(0,14)+`</h5>
-                                        <div class="price">$`+Intl.NumberFormat('de-DE').format(data[i].valart)+`</div>
-                                    </div>
-                                    <h4>Colors</h4>
-                                    <ul>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                    </ul>
-                                    <button>Buy It Now</button>
-                                </div>
-
-                                <div class="description">
-                                    <div class="icon"><i class="fas fa-info-circle"></i></div>
-                                    <div class="contents">
-                                        <h2>`+data[i].nomart.substr(0,14)+`</h2>
-                                        <p>`+data[i].descripción.substr(0,150)+`.</p>
-                                    </div>
-                                </div>
-                            </div>`;
+                            </div>
+                      `;
 
 
                 }
