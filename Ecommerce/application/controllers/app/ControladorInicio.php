@@ -11,6 +11,15 @@ class ControladorInicio extends CI_Controller
         }
 		$this->load->model('app/ModeloInicio');
 	
+	}
+	
+	function index()
+    {
+	
+		$this->load->view('app/componentes/header');
+		$this->load->view('app/componentes/menu');
+		$this->load->view('app/welcome');
+		$this->load->view('app/componentes/footer');
     }
     
 	public function todo()
@@ -25,4 +34,14 @@ class ControladorInicio extends CI_Controller
 		echo json_encode($data);
 	}
 
+	function productos()
+    {
+	
+		$categoria = $this->input->post('categoria');
+
+		$this->load->view('app/componentes/header');
+		$this->load->view('app/componentes/menu');
+		$this->load->view('app/categorias',['result'=>$categoria]);
+		$this->load->view('app/componentes/footer');
+    }
 }

@@ -15,7 +15,7 @@
 			foreach ($rest1->result()as $row1):
 				if($row1->p_id  == 1){$active = 'active';}else{$active='';}
 			?>
-			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="<?= $active?>"></li>	
+			<li data-target="#carouselExampleIndicators" data-slide-to="<?= $row1->p_id;?>" class="<?= $active?>"></li>	
 			<?php endforeach; ?>
 		</ol>
 		<div class="carousel-inner">
@@ -48,14 +48,17 @@
 		
 		foreach ($rest->result()as $row):
 		?>
-				<div class="col-xs-6" style=" margin: 20px; cursor:pointer;">
-					<div class="card">
-						<img class="card-img-top" src="<?= base_url('').$row->img?>" alt="Card image cap" style="width: 130px; height: 130px;">
-						<div class="text-center">
-						<hr>
-							<strong class="card-text"><?= $row->nomgru ?></strong>
+				<div class="col-xs-6 CategoriasVer" style=" margin: 20px; cursor:pointer;" data-product_code="<?= $row->id?>" data-product_code1="<?= $row->nomgru?>">
+					<form action="<?= site_url('app/ControladorInicio/productos') ?>" method="post" id="formulario<?= $row->id ?>">
+						<div class="card">
+							<img class="card-img-top" src="<?= base_url('').$row->img?>" alt="Card image cap" style="width: 130px; height: 100px;">
+							<div class="text-center">
+							<hr>
+								<strong class="card-text"><?= $row->nomgru ?></strong>
+								<input type="hidden" name="categoria" value="<?= $row->id ?>">
+							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 				
 		<?php endforeach; ?>
@@ -104,15 +107,4 @@
 			</div>
 		</div>
 	</div>
-
-	<script>
-		var urlInicio  			= "<?php echo site_url('app/ControladorInicio/todo')?>";
-		var url  				= "<?php echo base_url('')?>";
-		var urlGuardarCarrito  	= "<?php echo site_url('app/ControladorCarrito/guardar')?>";
-		var urlTotalCarrito  	= "<?php echo site_url('app/ControladorCarrito/total')?>";
-		var urlTodoCarrito  	= "<?php echo site_url('app/ControladorCarrito/todo')?>";
-		var urleliminarCarrito  = "<?php echo site_url('app/ControladorCarrito/eliminar')?>";
-		var urlSlaider  		= "<?php echo site_url('app/ControladorInicio/slaider')?>";
-	</script>
-
 	<script src="<?php echo base_url('asset/app/ajax/principal/principal.js')?>" type="text/javascript"></script>

@@ -7,16 +7,12 @@ class ModeloInicio extends CI_Model
     {
         $minimo             =   $this->input->post('minimo');
         $maximo             =   $this->input->post('maximo');
-        $categoria          =   $this->input->post('categoria');
         $busquedaGeneral    =   $this->input->post('busquedaGeneral');
         $categoria2         = '';
         $minimo2            =  '';
         $maximo2            =  '';
         $busquedaGeneral2   =  '';
-
-        if($categoria != ""){
-            $categoria2 = " AND categoria IN(".$categoria.") ";
-        }
+        $categoriaPost      =   $this->input->post('categoriaPost');
 
         if($minimo != ""){
             $minimo2 = " AND valart >= ".$minimo;
@@ -30,7 +26,7 @@ class ModeloInicio extends CI_Model
             $busquedaGeneral2 = " AND nomart LIKE  '%".$busquedaGeneral."%' ";
         }
        
-        $rest = $this->db->query("SELECT * FROM tbl_articulos WHERE estado = 1 $categoria2 $minimo2 $maximo2  $busquedaGeneral2");
+        $rest = $this->db->query("SELECT * FROM tbl_articulos WHERE estado = 1 AND categoria = $categoriaPost $minimo2 $maximo2  $busquedaGeneral2");
         return $rest->result();
        
     }
@@ -44,4 +40,6 @@ class ModeloInicio extends CI_Model
         $rest=$this->db->get();
         return $rest->result();
     }
+
+    
 }
