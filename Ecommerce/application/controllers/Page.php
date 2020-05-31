@@ -30,11 +30,16 @@ class Page extends CI_Controller
           $this->load->view('clientes/componentes/footer');
       }
       elseif($this->session->userdata('tipo_usuario')==='3')
-      {
+      {/*
           $this->load->view('app/componentes/header');
           $this->load->view('app/componentes/menu');
           $this->load->view('app/welcome');
-          $this->load->view('app/componentes/footer');
+          $this->load->view('app/componentes/footer');*/
+
+          $this->load->view('administrativo/componentes2/header');
+          $this->load->view('administrativo/componentes2/menu');
+          $this->load->view('administrativo/welcome');
+          $this->load->view('administrativo/componentes2/footer');
       }
       else
       {
