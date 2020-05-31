@@ -64,4 +64,6 @@ class ModeloCarrito extends CI_Model
         $this->db->where('c_fecha', $fecha)->where('c_producto', $articulo)->where('c_totalvalor', $total)->where('c_cliente', $usuario);
         $this->db->delete('tbl_carrito');
     }
+
+   
 }

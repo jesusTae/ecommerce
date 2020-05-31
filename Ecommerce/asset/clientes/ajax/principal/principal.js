@@ -30,6 +30,45 @@ $(document).ready(function(){
     alertify.defaults.theme.ok = "btn btn-primary";
     alertify.defaults.theme.cancel = "btn btn-danger";
     alertify.defaults.theme.input = "form-control";
+
+   //MODAL CARD CROUSEL PRODUCTS
+   $('.items').slick({
+        dots: true,
+        infinite: true,
+        speed: 800,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        slidesToShow: 4,	
+        slidesToScroll: 4,
+        responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+
+        ]
+    });
+    
+
    
 });
  //LLAMADO A EL CAROUSEL
@@ -722,6 +761,74 @@ $('#btnComprar').on('click',function(){
     }
 
 
+
+});
+
+
+
+$('.verSliderClick1').click(function(){
+
+    var id          = $(this).data('product_code');
+    var img         = $(this).data('product_code1');
+    var nombre      = $(this).data('product_code4');
+    var valor       = $(this).data('product_code5');
+    var descripcion = $(this).data('product_code7');
+    
+    $("#undProducto").val(1);
+    $("#nombreProducto1").text(nombre);
+    $("#nombreProducto2").text(nombre);
+    $("#descripcionProducto").text(descripcion);
+    $("#precioProducto").text('$ '+Intl.NumberFormat('de-DE').format(valor));
+    $("#idProducto").val(id);
+    $("#precioProducto2").val(valor);
+    $("#urlProducto").attr('src', url+img);
+
+
+    $('#ModalVerProductos').appendTo("body").modal('show');
+
+});
+
+$('.verSliderClick2').click(function(){
+
+    var id          = $(this).data('product_code');
+    var img         = $(this).data('product_code1');
+    var nombre      = $(this).data('product_code4');
+    var valor       = $(this).data('product_code5');
+    var descripcion = $(this).data('product_code7');
+    
+    $("#undProducto").val(1);
+    $("#nombreProducto1").text(nombre);
+    $("#nombreProducto2").text(nombre);
+    $("#descripcionProducto").text(descripcion);
+    $("#precioProducto").text('$ '+Intl.NumberFormat('de-DE').format(valor));
+    $("#idProducto").val(id);
+    $("#precioProducto2").val(valor);
+    $("#urlProducto").attr('src', url+img);
+
+
+    $('#ModalVerProductos').appendTo("body").modal('show');
+
+});
+
+$('.verSliderClick3').click(function(){
+
+    var id          = $(this).data('product_code');
+    var img         = $(this).data('product_code1');
+    var nombre      = $(this).data('product_code4');
+    var valor       = $(this).data('product_code5');
+    var descripcion = $(this).data('product_code7');
+    
+    $("#undProducto").val(1);
+    $("#nombreProducto1").text(nombre);
+    $("#nombreProducto2").text(nombre);
+    $("#descripcionProducto").text(descripcion);
+    $("#precioProducto").text('$ '+Intl.NumberFormat('de-DE').format(valor));
+    $("#idProducto").val(id);
+    $("#precioProducto2").val(valor);
+    $("#urlProducto").attr('src', url+img);
+
+
+    $('#ModalVerProductos').appendTo("body").modal('show');
 
 });
 

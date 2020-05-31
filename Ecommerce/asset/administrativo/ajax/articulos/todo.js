@@ -41,7 +41,7 @@ $(document).ready(function(){
                 },
                 "initComplete": function () {
                      //Apply text search
-                    this.api().columns([2,3,4,5]).every(function () {
+                    this.api().columns([2,3,4,5,6]).every(function () {
                         var title = $(this.footer()).text();
                     
                         $(this.footer()).html('<input type="text" class="form-control "  placeholder="Buscar..." />');
@@ -56,7 +56,7 @@ $(document).ready(function(){
 
                     });
 
-                    this.api().columns([6]).every(function () {
+                    this.api().columns([7]).every(function () {
                         var title = $(this.footer()).text();
                     
                         $(this.footer()).html('<input type="date" class="form-control form-control-sm" placeholder="Buscar..." />');
@@ -109,6 +109,29 @@ $(document).ready(function(){
                     { "data": "nomart"},
                     { "data": "valart", render: $.fn.dataTable.render.number(",", ".", 0, '$ ')},
                     { "data": "qtyart"},
+                    { "data": null,
+                        "mRender": function(data, type, full) {
+                            if(full.tipopromo == 0)
+                            {
+                                return '';
+                            }else if(full.tipopromo == 1){
+
+                                return 'Sin promocion';
+
+                            }else if(full.tipopromo == 2){
+
+                                return 'Nuevo Producto';
+
+                            }else if(full.tipopromo == 3){
+
+                                return 'Los Recomendados';
+
+                            }else if(full.tipopromo == 4){
+
+                                return 'Los Mas Vendidos';
+                            }
+                        }
+                    },
                     { "data": "fecha"},
                 ],
                 "columnDefs": [
@@ -170,6 +193,7 @@ $('#btnCreaArticulos').on('click',function(){
     $('[name="valart"]').val('');
     $('[name="qtyart"]').val('');
     $('[name="descripción"]').val('');
+    $('[name="tipopromo"]').val(1);
    
     $('[name="codart"]').prop( "disabled", false );
 
@@ -188,6 +212,7 @@ $('#btnGuardarArticulos').on('click',function(){
     var valart       =  $('[name="valart"]').val();
     var qtyart       =  $('[name="qtyart"]').val();
     var descripción  =  $('[name="descripción"]').val();
+    var tipopromo    =  $('[name="tipopromo"]').val();
 
 
     if(categoria=="")
@@ -244,6 +269,7 @@ $('#btnGuardarArticulos').on('click',function(){
     formData.append('qtyart',qtyart );
     formData.append('descripción',descripción );
     formData.append('categoria',categoria );
+    formData.append('tipopromo',tipopromo );
 
     $.ajax({
         type : "POST",
@@ -283,6 +309,7 @@ $('#tablaArticulos tbody').on('click','tr',function() {
     var descripción = data.descripción;
     var categoria   = data.categoria;
     var categorianom = data.nomgru;
+    var tipopromo    =  data.tipopromo;
    
     $('[name="id"]').val(id);
     $('[name="urlimg"]').val(urlimg);
@@ -291,6 +318,7 @@ $('#tablaArticulos tbody').on('click','tr',function() {
     $('[name="valart"]').val(valart);
     $('[name="qtyart"]').val(qtyart);
     $('[name="descripción"]').val(descripción);
+    $('[name="tipopromo"]').val(tipopromo);
 
     $('[name="categoria"]').append($('<option>', {
         val: categoria,

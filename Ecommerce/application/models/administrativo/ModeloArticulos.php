@@ -45,6 +45,7 @@ class ModeloArticulos extends CI_Model
         $valart         =   $this->input->post('valart');
         $qtyart         =   $this->input->post('qtyart');
         $descripción    =   $this->input->post('descripción');
+        $tipopromo      =   $this->input->post('tipopromo');
 
         $usuario = $this->session->userdata('id_usuario');
         $fecha = date("Y-m-d h:i:s");
@@ -71,6 +72,7 @@ class ModeloArticulos extends CI_Model
                     'valart'=>$valart,
                     'qtyart'=>$qtyart,
                     'descripción'=>$descripción,
+                    'tipopromo'=>$tipopromo,
                     'fechacrea'=>$fecha,
                     'fechamod'=>$fecha,
                     'usuariocrea'=>$usuario,
@@ -120,13 +122,12 @@ class ModeloArticulos extends CI_Model
         }else{
 
             $data=array(
-                'imageurl'=>'',
-                'imagenombre'=>'',
                 'categoria'=>$categoria,
                 'nomart'=>$nomart,
                 'valart'=>$valart,
                 'qtyart'=>$qtyart,
                 'descripción'=>$descripción,
+                'tipopromo'=>$tipopromo,
                 'fechamod'=>$fecha,
                 'usuariomod'=>$usuario,
             );

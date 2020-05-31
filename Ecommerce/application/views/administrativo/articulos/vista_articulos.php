@@ -35,10 +35,12 @@
                                 <th>Nombre</th>
                                 <th>Valor</th>
                                 <th>Unidad</th>
+                                <th>promocion</th>
                                 <th>Fecha</th>
                             </tr>
                         </thead>
                         <tfoot>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -106,6 +108,15 @@
             <div class="form-group">
                 <label>Descripcion del articulo</label>
                 <textarea  class="form-control" name="descripción" rows="7" placeholder="Descripcion del articulo..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Tipo de promocion</label>
+                <select class="form-control form-control-sm" name="tipopromo">
+                    <option value="1">Sin promocion</option>
+                    <option value="2">Nuevo Producto</option>
+                    <option value="3">Los Recomendados</option>
+                    <option value="4">Los Mas Vendido</option>
+                </select>
             </div>
             <hr>
             <button type="button" class="btn btn-danger fa fa-trash-o" id="btnEliminarArticulos"> Eliminar</button>

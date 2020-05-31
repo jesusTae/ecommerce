@@ -36,6 +36,8 @@ class ControladorCarrito extends CI_Controller
 		$data=$this->ModeloCarrito->geteliminar();
 		echo json_encode($data);
 	}
+
+	
 	
 
 }
