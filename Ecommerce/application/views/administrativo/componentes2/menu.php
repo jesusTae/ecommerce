@@ -183,6 +183,12 @@
               <span>Principal</span>
               </a>
           </li>
+          <li>
+            <a href="<?php echo site_url('administrativo/ControladorSincronizar');?>">
+              <i class="fa fa-refresh"></i>
+              <span>Sincronizar articulos</span>
+              </a>
+          </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-list"></i>

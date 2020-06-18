@@ -25,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 date_default_timezone_set('America/Bogota');
 $config['base_url'] = 'http://localhost/ecommerce/Ecommerce/';
+//$config['base_url'] = 'https://tualiadotae.com/ecommerce/';
 
 /*
 |--------------------------------------------------------------------------

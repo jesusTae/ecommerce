@@ -495,24 +495,6 @@ $('#addCarrito').on('click',function(){
     formData.append('id',id );
     formData.append('und',und );
     formData.append('precio',precio );
-/*
-    alertify.confirm('<h3 class="text-center fa fa-hdd-o"> Guardar</h3>', '<h6 class="text-center">deseas gregar este articulo <strong>'+nombre+'</strong> al carrito de compra</h6>', function(){ 
-
-        $.ajax({
-            type : "POST",
-            url  :  urlGuardarCarrito ,
-            dataType : "JSON",
-            data : formData,
-            contentType: false,
-            processData: false,
-            success: function(data){
-                verUndCarrito();
-                $('#ModalVerProductos').modal('hide');
-               
-            }
-        });
-    }
-    , function(){ alertify.error('Operacion Cancelada')});*/
 
     $.confirm({
         title: 'Mensaje!',
