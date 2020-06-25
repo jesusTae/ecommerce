@@ -4,9 +4,30 @@
         <h3><i class="fa fa-angle-right"></i> Sincronizar</h3>
         <div class="row mt">
           	<div class="col-lg-12">
-              <button type="button" class="btn btn-success fa fa-refresh" id="btnCreaUsuario"> Sincronizar</button>
+              <button type="button" class="btn btn-success fa fa-refresh" id="btnSincronizar"> Sincronizar</button>
                 <div class="table-responsive">
-                    
+                    <table class="table table-sm  table-bordered" id="tablaSincro">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Sincronizacion</th>
+                                <th>Total</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Usuario</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tfoot>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
 
           	</div>
@@ -17,3 +38,4 @@
     <!------------------------------------------------MODALS------------------------------------------------------->
 
 <!------------------------------------------------MODALS------------------------------------------------------->
+<script src="<?php echo base_url('asset/administrativo/ajax/sincronizacion/todo.js')?>" type="text/javascript"></script>

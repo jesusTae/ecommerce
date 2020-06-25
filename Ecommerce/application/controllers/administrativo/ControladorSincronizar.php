@@ -9,7 +9,7 @@ class ControladorSincronizar extends CI_Controller
         {
             redirect('login');
         }
-		//$this->load->model('administrativo/ModeloArticulos');
+		$this->load->model('administrativo/ModeloSincronizar');
 	
     }
     
@@ -19,6 +19,20 @@ class ControladorSincronizar extends CI_Controller
 		$this->load->view('administrativo/componentes2/menu');
 		$this->load->view('administrativo/sincronizar/vista_sincronizar');
 		$this->load->view('administrativo/componentes2/footer');
+	}
+
+	public function api()
+	{
+		$data=$this->ModeloSincronizar->getapi();
+		echo json_encode($data);
+
+	}
+
+	public function tabla()
+	{
+		$data=$this->ModeloSincronizar->gettabla();
+		echo json_encode($data);
+
 	}
 
 }
