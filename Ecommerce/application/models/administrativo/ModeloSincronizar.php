@@ -53,6 +53,61 @@ class ModeloSincronizar extends CI_Model
       
     }
 
+    function getapi2()
+    {
+        $usuario = $this->session->userdata('id_usuario');
+        $fecha = date("Y-m-d h:i:s");
+
+        $this->db->from('sincro_productos');
+        $this->db->truncate();
+
+        $data_array = json_decode($_POST['array2']);
+        
+        foreach ($data_array as $data_row):
+            //possible data modeling here...
+            $this->db->insert('sincro_productos', $data_row);
+        endforeach;
+
+        $rest = $this->db->query('SELECT * FROM sincro_productos t
+                                        WHERE !exists(select c.codart from tbl_articulos c where c.codart = t.codart)');
+
+        $this->db->query('INSERT INTO tbl_articulos 
+											SELECT 	"",
+                                                    "",
+                                                    "",
+                                                    t.categoria,
+                                                    t.codart,
+                                                    t.nomart,
+                                                    t.valart,
+													t.qtyart,
+													t.descripcion,
+                                                    1,
+                                                    "'.$fecha.'",
+                                                    "'.$fecha.'",
+                                                    '.$usuario.',
+                                                    '.$usuario.',
+													1
+													FROM sincro_productos t
+                                                        WHERE !exists(select c.codart from tbl_articulos c where c.codart = t.codart)');
+
+        if($rest->num_rows() != 0){
+
+            $und = $rest->num_rows();
+
+            $data=array(
+                's_nombre'=>'ARTICULOS',
+                's_und'=>$und,
+                's_fecha'=>$fecha,
+                's_usuario'=>$usuario,
+            );
+        
+            $sql_query=$this->db->insert('tbl_sincronizacion',$data);
+
+        }
+        return $rest->num_rows();
+      
+    }
+
     function gettabla()
     {
         $this->db->select(' *,

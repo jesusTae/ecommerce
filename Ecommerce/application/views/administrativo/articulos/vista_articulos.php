@@ -107,7 +107,7 @@
             </div>
             <div class="form-group">
                 <label>Descripcion del articulo</label>
-                <textarea  class="form-control" name="descripción" rows="7" placeholder="Descripcion del articulo..."></textarea>
+                <textarea  class="form-control" name="descripcion" rows="7" placeholder="Descripcion del articulo..."></textarea>
             </div>
             <div class="form-group">
                 <label>Tipo de promocion</label>

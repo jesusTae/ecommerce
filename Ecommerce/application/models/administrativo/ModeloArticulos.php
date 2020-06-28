@@ -10,7 +10,7 @@ class ModeloArticulos extends CI_Model
                             c.nomgru
                              ');
         $this->db->from('tbl_articulos a');
-        $this->db->join('tbl_categorias c', 'c.id  = a.categoria');
+        $this->db->join('tbl_categorias c', 'c.codgru  = a.categoria');
         $this->db->where('a.estado',1);
         $rest=$this->db->get();
         return $rest->result();
@@ -21,7 +21,7 @@ class ModeloArticulos extends CI_Model
         $searchTerm = $this->input->post('searchTerm');
 
         // Fetch users
-        $this->db->select('id,nomgru');
+        $this->db->select('codgru,nomgru');
         $this->db->where("nomgru like '%".$searchTerm."%' ");
         $this->db->where("estado",1);
         $fetched_records = $this->db->get('tbl_categorias');
@@ -30,7 +30,7 @@ class ModeloArticulos extends CI_Model
         // Initialize Array with fetched data
         $data = array();
         foreach($users as $user){
-            $data[] = array("id"=>$user['id'], "text"=>$user['nomgru']);
+            $data[] = array("id"=>$user['codgru'], "text"=>$user['nomgru']);
         }
         return $data;
     }
@@ -44,7 +44,7 @@ class ModeloArticulos extends CI_Model
         $nomart         =   $this->input->post('nomart');
         $valart         =   $this->input->post('valart');
         $qtyart         =   $this->input->post('qtyart');
-        $descripción    =   $this->input->post('descripción');
+        $descripcion    =   $this->input->post('descripcion');
         $tipopromo      =   $this->input->post('tipopromo');
 
         $usuario = $this->session->userdata('id_usuario');
@@ -71,7 +71,7 @@ class ModeloArticulos extends CI_Model
                     'nomart'=>$nomart,
                     'valart'=>$valart,
                     'qtyart'=>$qtyart,
-                    'descripción'=>$descripción,
+                    'descripcion'=>$descripcion,
                     'tipopromo'=>$tipopromo,
                     'fechacrea'=>$fecha,
                     'fechamod'=>$fecha,
@@ -102,7 +102,7 @@ class ModeloArticulos extends CI_Model
 
                     $this->load->library('upload', $config);
 
-                    $mi_archivo = simpleresize($mi_archivo, 200, 85);
+                    //$mi_archivo = simpleresize($mi_archivo, 200, 85);
 
                     if ($this->upload->do_upload($mi_archivo)) {}
 
@@ -126,7 +126,7 @@ class ModeloArticulos extends CI_Model
                 'nomart'=>$nomart,
                 'valart'=>$valart,
                 'qtyart'=>$qtyart,
-                'descripción'=>$descripción,
+                'descripcion'=>$descripcion,
                 'tipopromo'=>$tipopromo,
                 'fechamod'=>$fecha,
                 'usuariomod'=>$usuario,

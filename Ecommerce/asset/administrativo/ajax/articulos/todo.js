@@ -100,7 +100,7 @@ $(document).ready(function(){
                                 return '<div class=col-md-12 text-center"><img src="'+urlArticulosblanco+'/'+full.imageurl+'" alt="Imagen del porducto"  class="thumbnail" width="40px" /></div>';
                             }else{
 
-                                return '<div class=col-md-12 text-center"><img src="'+urlArticulosblanco+'asset/administrativo/imgarticulos/    .png" alt="Imagen del porducto"  class="thumbnail" width="40px" /></div>';
+                                return '<div class=col-md-12 text-center"><img src="'+urlArticulosblanco+'asset/administrativo/imgarticulos/imgblanco.png" alt="Imagen del porducto"  class="thumbnail" width="40px" /></div>';
                             }
                         }
                     },
@@ -192,7 +192,7 @@ $('#btnCreaArticulos').on('click',function(){
     $('[name="nomart"]').val('');
     $('[name="valart"]').val('');
     $('[name="qtyart"]').val('');
-    $('[name="descripción"]').val('');
+    $('[name="descripcion"]').val('');
     $('[name="tipopromo"]').val(1);
    
     $('[name="codart"]').prop( "disabled", false );
@@ -211,7 +211,7 @@ $('#btnGuardarArticulos').on('click',function(){
     var nomart       =  $('[name="nomart"]').val();
     var valart       =  $('[name="valart"]').val();
     var qtyart       =  $('[name="qtyart"]').val();
-    var descripción  =  $('[name="descripción"]').val();
+    var descripcion  =  $('[name="descripcion"]').val();
     var tipopromo    =  $('[name="tipopromo"]').val();
 
 
@@ -243,10 +243,10 @@ $('#btnGuardarArticulos').on('click',function(){
         return false;
     }
 
-    if(descripción=="")
+    if(descripcion=="")
     {
         alertify.error('Digite las Descripcion del articulo');
-        $('[name="descripción"]').focus();
+        $('[name="descripcion"]').focus();
         return false;
     }
 
@@ -267,7 +267,7 @@ $('#btnGuardarArticulos').on('click',function(){
     formData.append('nomart',nomart );
     formData.append('valart',valart );
     formData.append('qtyart',qtyart );
-    formData.append('descripción',descripción );
+    formData.append('descripcion',descripcion );
     formData.append('categoria',categoria );
     formData.append('tipopromo',tipopromo );
 
@@ -306,7 +306,7 @@ $('#tablaArticulos tbody').on('click','tr',function() {
     var nomart      = data.nomart;
     var valart      = data.valart;
     var qtyart      = data.qtyart;
-    var descripción = data.descripción;
+    var descripcion = data.descripcion;
     var categoria   = data.categoria;
     var categorianom = data.nomgru;
     var tipopromo    =  data.tipopromo;
@@ -317,7 +317,7 @@ $('#tablaArticulos tbody').on('click','tr',function() {
     $('[name="nomart"]').val(nomart);
     $('[name="valart"]').val(valart);
     $('[name="qtyart"]').val(qtyart);
-    $('[name="descripción"]').val(descripción);
+    $('[name="descripcion"]').val(descripcion);
     $('[name="tipopromo"]').val(tipopromo);
 
     $('[name="categoria"]').append($('<option>', {

@@ -102,16 +102,18 @@ $('#btnSincronizar').on('click',function(){
 
     alertify.confirm('Mesaje de confirmacion', 'Deseas realizar una sincronizacion?', 
             function(){ 
-                $('#main-content').waitMe({
-
-                    effect : 'stretch',
-                    text : 'Sincronizando Categorias...',
-                    bg : '#797979',
-                    color : '#FFFFFF'
-                });
+               
 
                 $.getJSON('http://tualiadotae.com/apiTae/public/api/getCategorias', function(array) {
                     //alert(array);            
+                    $('#main-content').waitMe({
+
+                        effect : 'stretch',
+                        text : 'Sincronizando Categorias...',
+                        bg : '#797979',
+                        color : '#FFFFFF'
+                    });
+
                     $.ajax({
                         type : "POST",
                         url  : link_site+'/administrativo/ControladorSincronizar/api',
@@ -128,14 +130,18 @@ $('#btnSincronizar').on('click',function(){
                                     
                                         tablaSincronizacion();
                                         $('#main-content').waitMe("hide");
+                                        sincronizarProductos();
                                         
                                 });
+
+                                
                             }else{
                                 alertify
                                     .alert("<h3 class='text-center'>Mensaje!</h3>","<h5 class='text-center'>Se actualizaron "+data+" categorias.</h5>", function(){
                                         
                                         tablaSincronizacion();
                                         $('#main-content').waitMe("hide");
+                                        sincronizarProductos();
 
                                     });
                             }
@@ -145,7 +151,60 @@ $('#btnSincronizar').on('click',function(){
                     });
                 
                 });
-             }
-            , function(){ alertify.error('Operacion cancelada')}).set('labels', {ok:'SI', cancel:'NO'});;
+
+            }
+            , function(){ alertify.error('Operacion cancelada')}).set('labels', {ok:'SI', cancel:'NO'});
     
 });
+
+function sincronizarProductos(){
+
+    
+
+    $.getJSON('http://tualiadotae.com/apiTae/public/api/getProductos', function(array2) {
+        //alert(array);        
+            
+        $('#main-content').waitMe({
+
+            effect : 'stretch',
+            text : 'Sincronizando Productos...',
+            bg : '#797979',
+            color : '#FFFFFF'
+        });
+
+        $.ajax({
+            type : "POST",
+            url  : link_site+'/administrativo/ControladorSincronizar/api2',
+            dataType : "JSON",
+            data : {'array2': JSON.stringify(array2)},
+            //contentType: false,
+            //processData: false,
+            success: function(data){
+                        
+                if(data==0)
+                {
+                    alertify
+                        .alert("<h3 class='text-center'>Mensaje!</h3>","<h5 class='text-center'>No se encontraron articulos nuevos.</h5>", function(){
+                        
+                            tablaSincronizacion();
+                            $('#main-content').waitMe("hide");
+                            
+                    });
+                }else{
+                    alertify
+                        .alert("<h3 class='text-center'>Mensaje!</h3>","<h5 class='text-center'>Se actualizaron "+data+" articulos.</h5>", function(){
+                            
+                            tablaSincronizacion();
+                            $('#main-content').waitMe("hide");
+
+                        });
+                }
+
+              
+            }
+        });
+    
+    });
+
+    
+}

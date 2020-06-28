@@ -28,6 +28,13 @@ class ControladorSincronizar extends CI_Controller
 
 	}
 
+	public function api2()
+	{
+		$data=$this->ModeloSincronizar->getapi2();
+		echo json_encode($data);
+
+	}
+
 	public function tabla()
 	{
 		$data=$this->ModeloSincronizar->gettabla();
