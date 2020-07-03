@@ -197,6 +197,7 @@
             <ul class="sub">
               <li><a href="<?php echo site_url('administrativo/ControladorCategorias');?>">Categoria</a></li>
               <li><a href="<?php echo site_url('administrativo/ControladorArticulos');?>">Articulos</a></li>
+              <li><a href="<?php echo site_url('administrativo/ControladorPedidos');?>">Pedidos</a></li>
             </ul>
           </li>
           <li class="sub-menu">
