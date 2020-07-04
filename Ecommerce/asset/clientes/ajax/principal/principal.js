@@ -124,7 +124,7 @@ function todoArticulos(){
     var minimo          = $('#manimoF').val();
     var maximo          = $('#maximoF').val();
     var categoria       = get_filter('categoriasF');
-
+  
     var formData = new FormData();
     formData.append('busquedaGeneral',busquedaGeneral );
     formData.append('minimo',minimo );
@@ -141,10 +141,11 @@ function todoArticulos(){
         success: function(data){
             var html = '';
             var i;
+
             if(data != 0)
-            {
+            {            
                 for(i=0; i<data.length; i++)
-                {  
+                {   
                     html += `<div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 verProductosClick jar" style="cursor:pointer;"
                                 data-product_code="`+data[i].id+`"
                                 data-product_code1="`+data[i].imageurl+`"
@@ -153,7 +154,7 @@ function todoArticulos(){
                                 data-product_code4="`+data[i].nomart+`"
                                 data-product_code5="`+data[i].valart+`"
                                 data-product_code6="`+data[i].qtyart+`"
-                                data-product_code7="`+data[i].descripción+`"
+                                data-product_code7="`+data[i].descripcion+`"
                                 data-product_code8="`+data[i].estado+`"
                             >
                         <div class="blog-card blog-card-blog">
@@ -166,7 +167,7 @@ function todoArticulos(){
                                 <h4 class="blog-card-caption">
                                     <a href="#" class="text-success">`+data[i].nomart.substr(0,14)+`...</a>
                                 </h4>
-                                <p class="blog-card-description">`+data[i].descripción.substr(0,70)+`...</p>
+                                <p class="blog-card-description">`+data[i].descripcion.substr(0,70)+`...</p>
                                 <div class="ftr">
                                     <div class="author">
                                         <p class="pull-left text-success">$`+Intl.NumberFormat('de-DE').format(data[i].valart)+`</p>
@@ -726,7 +727,9 @@ $('#btnComprar').on('click',function(){
                     SI: {
                         btnClass: 'btn btn-outline-success',
                         action: function () {
-                            alertify.error('Felicidades');
+                            $("#verModalCarrito").modal('hide');//ocultamos el modal
+                            $('#ModalPago').appendTo("body").modal('show');
+                            $('#verapayco').html(`	<button type="button" class="btn btn-success" id="btnGuardarVenta">Guardar</button>`);
                         }
                     },
                     
@@ -744,6 +747,93 @@ $('#btnComprar').on('click',function(){
 
 
 
+});
+
+
+//COMPRAR
+$('#ModalPago').on('click','#btnGuardarVenta',function() {
+//$('#btnGuardarVenta').on('click',function(){
+
+    var formapago = $('[name="formapago"] option:selected').val();
+    var direccion = $('[name="direccion"]').val();
+    var telefono  = $('[name="telefono"]').val();
+  
+    if(formapago == null){
+        alertify.error('Seleccione un tipo de pago');
+        return false;
+    }
+
+    if(direccion == ''){
+        alertify.error('llene el campo de direccion');
+        return false;
+    }
+
+    if(telefono == ''){
+        alertify.error('llene el campo de telefono');
+        return false;
+    }
+
+
+    var formData = new FormData();
+    formData.append('formapago',formapago );
+    formData.append('direccion',direccion );
+    formData.append('telefono',telefono );
+    
+
+    if(formapago == 1){
+
+        $.ajax({
+            type : "POST",
+            url  :  urlSite+'/clientes/ControladorVenta/guardar' ,
+            dataType : "JSON",
+            data : formData,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                verUndCarrito();
+                //todoArticulos();
+                //$('#verModalCarrito').modal('hide');
+            }
+        });
+    }
+    else if(formapago == 2){
+
+        $.ajax({
+            type : "POST",
+            url  :  urlSite+'/clientes/ControladorVenta/guardar' ,
+            dataType : "JSON",
+            data : formData,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                verUndCarrito();
+                //todoArticulos();
+                //$('#verModalCarrito').modal('hide');
+            }
+        });
+
+        var epayco =` <form>
+                        <script
+                            src="https://checkout.epayco.co/checkout.js"
+                            class="epayco-button"
+                            data-epayco-key="491d6a0b6e992cf924edd8d3d088aff1"
+                            data-epayco-amount="50000"
+                            data-epayco-name="Vestido Mujer Primavera"
+                            data-epayco-description="Vestido Mujer Primavera"
+                            data-epayco-currency="cop"
+                            data-epayco-country="co"
+                            data-epayco-test="true"
+                            data-epayco-external="false"
+                            data-epayco-response="https://ejemplo.com/respuesta.html"
+                            data-epayco-confirmation="https://ejemplo.com/confirmacion">
+                        </script>
+                    </form>`;
+
+
+        $('#verapayco').html(epayco);
+
+
+    }
 });
 
 

@@ -285,11 +285,11 @@
 						<div class="filter-content">
 							<div class="card-body">
 							<hr>
-							<?php $consulta = $this->db->query("SELECT id,nomgru FROM tbl_categorias WHERE estado = 1");
+							<?php $consulta = $this->db->query("SELECT id,codgru,nomgru FROM tbl_categorias WHERE estado = 1");
 							 	foreach ($consulta->result() as $row): 
 							?>
 								<label class="form-check">
-									<input class="form-check-input common_selector categoriasF" type="checkbox" name="categoriasF<?= $row->id?>" value="<?= $row->id?>">
+									<input class="form-check-input common_selector categoriasF" type="checkbox" name="categoriasF<?= $row->id?>" value="<?= $row->codgru?>">
 									<span class="form-check-label">
 										<?= $row->nomgru?>
 									</span>
@@ -306,6 +306,60 @@
 		</div>
 	</div>
 
+	<!-- Modal -->
+	<!-- Modal -->
+	<div class="modal fade bd-example-modal-lg" id="ModalPago" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-lg">
+    		<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-product-hunt" aria-hidden="true"></i> Comprar</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-6" style="  border-right: 1px solid #28A745;">
+							
+						</div>
+						<div class="col-md-6 product_content">
+							<div class="form-group">
+								<label>Elije forma de pago</label>
+								<select name="formapago" class="form-control">
+								<option disabled selected>Selecciona un medio de pago</option>
+									<option value="1">Efectivo</option>
+									<option value="2">Tajeta</option>
+								</select>
+							</div>
+							
+							<div class="form-group">
+								<label>Direccion de domicilio</label>
+								<input type="text" class="form-control" name="direccion" placeholder="Direccion de domicilio...">
+							</div>
+
+							<div class="form-group">
+								<label>Telefono de contacto</label>
+								<input type="number" class="form-control" name="telefono" placeholder="Telefono de contacto...">
+							</div>
+							
+							
+               			</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+
+					
+					<div id="verapayco">
+						<button type="button" class="btn btn-success" id="btnGuardarVenta">Guardar</button>
+					</div>
+					
+					<button type="button" class="btn btn-danger" data-dismiss="modal" >Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<script>
 		var urlInicio  			= "<?php echo site_url('clientes/ControladorInicio/todo')?>";
 		var url  				= "<?php echo base_url('')?>";
@@ -315,5 +369,6 @@
 		var urleliminarCarrito  = "<?php echo site_url('clientes/ControladorCarrito/eliminar')?>";
 		var urlSlaider  		= "<?php echo site_url('clientes/ControladorInicio/slaider')?>";
 		var urlSlaiderProducto1 = "<?php echo site_url('clientes/ControladorCarrito/slaiderproducto1')?>";
+		var urlSite  			= "<?php echo site_url('')?>";
 	</script>
 	<script src="<?php echo base_url('asset/clientes/ajax/principal/principal.js')?>" type="text/javascript"></script>

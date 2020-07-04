@@ -13,7 +13,7 @@ class ModeloInicio extends CI_Model
         $minimo2            =  '';
         $maximo2            =  '';
         $busquedaGeneral2   =  '';
-
+      
         if($categoria != ""){
             $categoria2 = " AND categoria IN(".$categoria.") ";
         }
