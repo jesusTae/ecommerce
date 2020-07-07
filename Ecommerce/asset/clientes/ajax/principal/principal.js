@@ -455,7 +455,7 @@ function verUndCarrito(){
 //AL DAR CLICK SE ABRE EL MODAL DE LAS DESCIPCIONES DE LOS PRODUCTOS
 $('#contenido').on('click','.verProductosClick',function(){
 
-    var id          = $(this).data('product_code');
+    var id          = $(this).data('product_code3');
     var img         = $(this).data('product_code1');
     var nombre      = $(this).data('product_code4');
     var valor       = $(this).data('product_code5');
@@ -727,6 +727,8 @@ $('#btnComprar').on('click',function(){
                     SI: {
                         btnClass: 'btn btn-outline-success',
                         action: function () {
+
+                            
                             $("#verModalCarrito").modal('hide');//ocultamos el modal
                             $('#ModalPago').appendTo("body").modal('show');
                             $('#verapayco').html(`	<button type="button" class="btn btn-success" id="btnGuardarVenta">Guardar</button>`);
@@ -791,8 +793,19 @@ $('#ModalPago').on('click','#btnGuardarVenta',function() {
             processData: false,
             success: function(data){
                 verUndCarrito();
-                //todoArticulos();
-                //$('#verModalCarrito').modal('hide');
+               
+                $('#ModalPago').modal('hide');
+
+                $.alert({
+                    title: 'Mensaje!',
+                    content: '<h6 class="text-center">Tu compra fue exitosa. Muchas gracias!</h6>',
+                    buttons: {
+                        CERRAR: {
+                            btnClass: 'btn btn-outline-success',
+                            action: function () {}
+                        }
+                    }
+                });
             }
         });
     }
@@ -807,31 +820,44 @@ $('#ModalPago').on('click','#btnGuardarVenta',function() {
             processData: false,
             success: function(data){
                 verUndCarrito();
-                //todoArticulos();
-                //$('#verModalCarrito').modal('hide');
+
+                $.alert({
+                    title: 'Mensaje!',
+                    content: '<h6 class="text-center">Continue con el pago en line!</h6>',
+                    buttons: {
+                        CERRAR: {
+                            btnClass: 'btn btn-outline-success',
+                            action: function () {}
+                        }
+                    }
+                });
+
+                var valfac = data[0].valfac;
+                var factura = data[0].tipfac+' - '+data[0].numfac;
+                
+
+                var epayco =` <form>
+                                    <script
+                                        src="https://checkout.epayco.co/checkout.js"
+                                        class="epayco-button"
+                                        data-epayco-key="491d6a0b6e992cf924edd8d3d088aff1"
+                                        data-epayco-amount="`+valfac+`"
+                                        data-epayco-name="Vestido Mujer Primavera"
+                                        data-epayco-description="`+factura+`"
+                                        data-epayco-currency="cop"
+                                        data-epayco-country="co"
+                                        data-epayco-test="true"
+                                        data-epayco-external="false"
+                                        data-epayco-response="https://ejemplo.com/respuesta.html"
+                                        data-epayco-confirmation="https://ejemplo.com/confirmacion">
+                                    </script>
+                                </form>`;
+
+
+                $('#verapayco').html(epayco);
+
             }
         });
-
-        var epayco =` <form>
-                        <script
-                            src="https://checkout.epayco.co/checkout.js"
-                            class="epayco-button"
-                            data-epayco-key="491d6a0b6e992cf924edd8d3d088aff1"
-                            data-epayco-amount="50000"
-                            data-epayco-name="Vestido Mujer Primavera"
-                            data-epayco-description="Vestido Mujer Primavera"
-                            data-epayco-currency="cop"
-                            data-epayco-country="co"
-                            data-epayco-test="true"
-                            data-epayco-external="false"
-                            data-epayco-response="https://ejemplo.com/respuesta.html"
-                            data-epayco-confirmation="https://ejemplo.com/confirmacion">
-                        </script>
-                    </form>`;
-
-
-        $('#verapayco').html(epayco);
-
 
     }
 });

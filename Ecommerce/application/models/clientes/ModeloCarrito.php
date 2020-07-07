@@ -47,7 +47,7 @@ class ModeloCarrito extends CI_Model
                             a.nomart
                             ');
         $this->db->from('tbl_carrito c');
-        $this->db->join('tbl_articulos a', 'a.id  = c.c_producto');
+        $this->db->join('tbl_articulos a', 'a.codart  = c.c_producto');
         $this->db->where('c.c_cliente',$usuario);
         $this->db->order_by('c.c_fecha', 'DESC');
         $rest=$this->db->get();

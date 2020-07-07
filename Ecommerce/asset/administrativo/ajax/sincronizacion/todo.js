@@ -104,7 +104,7 @@ $('#btnSincronizar').on('click',function(){
             function(){ 
                
 
-                $.getJSON('http://tualiadotae.com/apiTae/public/api/getCategorias', function(array) {
+                $.getJSON('http://3.18.34.105:8080/apiGlobal/public/api/getCategorias', function(array) {
                     //alert(array);            
                     $('#main-content').waitMe({
 
@@ -161,7 +161,7 @@ function sincronizarProductos(){
 
     
 
-    $.getJSON('http://tualiadotae.com/apiTae/public/api/getProductos', function(array2) {
+    $.getJSON('http://3.18.34.105:8080/apiGlobal/public/api/getProductos', function(array2) {
         //alert(array);        
             
         $('#main-content').waitMe({
