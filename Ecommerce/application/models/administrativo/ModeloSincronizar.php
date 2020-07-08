@@ -61,6 +61,7 @@ class ModeloSincronizar extends CI_Model
         $this->db->from('sincro_productos');
         $this->db->truncate();
 
+        handler.proceed();
         $data_array = json_decode($_POST['array2']);
         
         foreach ($data_array as $data_row):
