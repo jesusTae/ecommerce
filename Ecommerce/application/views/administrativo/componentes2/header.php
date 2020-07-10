@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
   <title>Ecommerce Admin</title>
 
-  <!-- Favicons -->
+  <!-- Favicons   -->
   <link href="<?php echo base_url('asset/administrativo/img/favicon.png')?>" rel="icon">
   <link href="<?php echo base_url('asset/administrativo/img/apple-touch-icon.png')?>" rel="apple-touch-icon">
   <!-- Bootstrap core CSS -->
@@ -33,6 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url('asset/administrativo/lib/jquery/jquery.min.js')?>"></script>
   <script src="<?php echo base_url('asset/administrativo/js/select2.min.js');?>"></script>
   <script src="<?php echo base_url('asset/administrativo/progress/waitMe.js');?>"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
 
   <script>
     var link_site = "<?php echo site_url('')?>";

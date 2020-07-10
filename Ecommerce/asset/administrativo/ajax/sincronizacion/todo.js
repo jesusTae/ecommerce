@@ -102,56 +102,50 @@ $('#btnSincronizar').on('click',function(){
 
     alertify.confirm('Mesaje de confirmacion', 'Deseas realizar una sincronizacion?', 
             function(){ 
-               
 
-                $.getJSON('http://3.18.34.105:8080/apiGlobal/public/api/getCategorias', function(array) {
-                    //alert(array);            
-                    $('#main-content').waitMe({
+                        $('#main-content').waitMe({
 
-                        effect : 'stretch',
-                        text : 'Sincronizando Categorias...',
-                        bg : '#797979',
-                        color : '#FFFFFF'
-                    });
+                            effect : 'stretch',
+                            text : 'Sincronizando Categorias...',
+                            bg : '#797979',
+                            color : '#FFFFFF'
+                        });
 
-                    $.ajax({
-                        type : "POST",
-                        url  : link_site+'/administrativo/ControladorSincronizar/api',
-                        dataType : "JSON",
-                        data : {'array': JSON.stringify(array)},
-                        //contentType: false,
-                        //processData: false,
-                        success: function(data){
-                                    
-                            if(data==0)
-                            {
-                                alertify
-                                    .alert("<h3 class='text-center'>Mensaje!</h3>","<h5 class='text-center'>No se encontraron categorias nuevas.</h5>", function(){
-                                    
-                                        tablaSincronizacion();
-                                        $('#main-content').waitMe("hide");
-                                        sincronizarProductos();
+                        $.ajax({
+                            type : "POST",
+                            url  : link_site+'/administrativo/ControladorSincronizar/api',
+                            dataType : "JSON",
+                            data : '',
+                            //contentType: false,
+                            //processData: false,
+                            success: function(data){
                                         
-                                });
-
-                                
-                            }else{
-                                alertify
-                                    .alert("<h3 class='text-center'>Mensaje!</h3>","<h5 class='text-center'>Se actualizaron "+data+" categorias.</h5>", function(){
+                                if(data==0)
+                                {
+                                    alertify
+                                        .alert("<h3 class='text-center'>Mensaje!</h3>","<h5 class='text-center'>No se encontraron categorias nuevas.</h5>", function(){
                                         
-                                        tablaSincronizacion();
-                                        $('#main-content').waitMe("hide");
-                                        sincronizarProductos();
-
+                                            tablaSincronizacion();
+                                            $('#main-content').waitMe("hide");
+                                            sincronizarProductos();
+                                            
                                     });
+    
+                                    
+                                }else{
+                                    alertify
+                                        .alert("<h3 class='text-center'>Mensaje!</h3>","<h5 class='text-center'>Se actualizaron "+data+" categorias.</h5>", function(){
+                                            
+                                            tablaSincronizacion();
+                                            $('#main-content').waitMe("hide");
+                                            sincronizarProductos();
+    
+                                        });
+                                }
+    
+                              
                             }
-
-                          
-                        }
-                    });
-                
-                });
-
+                        }); 
             }
             , function(){ alertify.error('Operacion cancelada')}).set('labels', {ok:'SI', cancel:'NO'});
     
@@ -159,11 +153,6 @@ $('#btnSincronizar').on('click',function(){
 
 function sincronizarProductos(){
 
-    
-
-    $.getJSON('http://3.18.34.105:8080/apiGlobal/public/api/getProductos', function(array2) {
-        //alert(array);        
-            
         $('#main-content').waitMe({
 
             effect : 'stretch',
@@ -176,7 +165,7 @@ function sincronizarProductos(){
             type : "POST",
             url  : link_site+'/administrativo/ControladorSincronizar/api2',
             dataType : "JSON",
-            data : {'array2': JSON.stringify(array2)},
+            data : '',
             //contentType: false,
             //processData: false,
             success: function(data){
@@ -203,8 +192,4 @@ function sincronizarProductos(){
               
             }
         });
-    
-    });
-
-    
 }

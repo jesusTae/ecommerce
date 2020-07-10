@@ -5,14 +5,14 @@ class ModeloVenta extends CI_Model
 {
     function getguardar()
     {
-        $formapago    =   $this->input->post('formapago');
-        $direccion    =   $this->input->post('direccion');
-        $telefono     =   $this->input->post('telefono');
+        $formapago  =   $this->input->post('formapago');
+        $direccion  =   $this->input->post('direccion');
+        $telefono   =   $this->input->post('telefono');
 
         $usuario    =   $this->session->userdata('id_usuario');
-        $nit    =   $this->session->userdata('nit_tusuario');
+        $nit        =   $this->session->userdata('nit_tusuario');
         $fecha      =   date("Y-m-d h:i:s");
-        $vtotal = 0;
+        $vtotal     = 0;
 
         if($formapago == 1){
             $estado = 1;
@@ -84,15 +84,65 @@ class ModeloVenta extends CI_Model
         $this->db->where('c_cliente', $usuario);
         $this->db->delete('tbl_carrito');
 
-
-        /**DEVOLVER UN FACTURA */
+        
+         /**api de factura */
+        
+         $curl = curl_init();
+         $auth_data =  array(
+             "idemp"   => '001',
+             "codcto"  => '001',
+             "tipfac"  => 'TV',
+             "numfac"  => $ultimoId,
+             "valfac"  => $vtotal,
+             "netfac"  => $vtotal,
+             "nitcli"  => $nit,
+         );
+         curl_setopt($curl, CURLOPT_POST, 1);
+         curl_setopt($curl, CURLOPT_POSTFIELDS, $auth_data);
+         curl_setopt($curl, CURLOPT_URL, 'http://3.18.34.105:8080/apiGlobal/public/api/saveFactura');
+         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+         $result = curl_exec($curl);
+         if(!$result){die("Connection Failure");}
+         curl_close($curl);
+       
+        /**api de detalle factura */
 
         $this->db->select(' * ');
-        $this->db->from('factura');
-        $this->db->where('tipfac','TV');
-        $this->db->where('numfac',$ultimoId);
-        $rest=$this->db->get();
-        return $rest->result();
+        $this->db->from('detallefactura');
+        $this->db->where('tipofactura','TV');
+        $this->db->where('numfactura',$ultimoId);
+        $rest2=$this->db->get();
+       
+
+        foreach ( $rest2->result() as $row2) {
+            
+            $dcodcto = $row2->codcto;
+            $dcodart = $row2->codart;
+            $dnumfac = $row2->numfactura;
+            $dtipfac = $row2->tipofactura;
+            $dvalfac = $row2->valart;
+            $dqtyart = $row2->qtyart;
+
+            $curl = curl_init();
+            $auth_data =  array(
+                "idemp"  =>  '001',
+                "codcto" =>  $dcodcto,
+                "codart" =>  $dcodart,
+                "numfac" =>  $dnumfac,
+                "tipfac" =>  $dtipfac,
+                "valfac" =>  $dvalfac,
+                "qtyart" =>  $dqtyart,
+            );
+            curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $auth_data);
+            curl_setopt($curl, CURLOPT_URL, 'http://3.18.34.105:8080/apiGlobal/public/api/saveFacturadet');
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+            $result = curl_exec($curl);
+            if(!$result){die("Connection Failure");}
+            curl_close($curl);
+        }
     }
    
 }

@@ -7,11 +7,18 @@ class ModeloSincronizar extends CI_Model
     {
         $usuario = $this->session->userdata('id_usuario');
         $fecha = date("Y-m-d h:i:s");
+        
 
         $this->db->from('sincro_categorias');
         $this->db->truncate();
 
-        $data_array = json_decode($_POST['array']);
+        $statisticsJson = file_get_contents("http://3.18.34.105:8080/apiGlobal/public/api/getCategorias");
+        //$statisticsObj = json_decode($statisticsJson);
+
+     
+
+        //$data_array = json_decode($_POST['array']);
+        $data_array = json_decode($statisticsJson);
         
         foreach ($data_array as $data_row):
             // possible data modeling here...
@@ -61,9 +68,10 @@ class ModeloSincronizar extends CI_Model
         $this->db->from('sincro_productos');
         $this->db->truncate();
 
-        handler.proceed();
-        $data_array = json_decode($_POST['array2']);
+        $statisticsJson = file_get_contents("http://3.18.34.105:8080/apiGlobal/public/api/getProductos");
+       // $data_array = json_decode($_POST['array2']);
         
+       $data_array = json_decode($statisticsJson);
         foreach ($data_array as $data_row):
             //possible data modeling here...
             $this->db->insert('sincro_productos', $data_row);

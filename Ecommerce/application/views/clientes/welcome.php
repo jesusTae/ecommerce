@@ -56,11 +56,11 @@
                                         <div class="bbb_viewed_price text-success">$<?= number_format($row1->valart); ?></div>
                                         <div class="bbb_viewed_name"><?=  substr($row1->nomart,0,20); ?>..</div>
 										<button type="button" class="verSliderClick3 btn btn-outline-success fa fa-search" 
-											data-product_code="<?=$row1->id?>"
+											data-product_code="<?=$row1->codart?>"
 											data-product_code1="<?=$row1->imageurl?>"
 											data-product_code4="<?=$row1->nomart?>"
 											data-product_code5="<?=$row1->valart?>"
-											data-product_code7="<?=$row1->descripción?>"
+											data-product_code7="<?=$row1->descripcion?>"
 											"> Ver</button>
                                     </div>
                                     <ul class="item_marks">
@@ -93,11 +93,11 @@
                                         <div class="bbb_viewed_price text-success">$<?= number_format($row2->valart); ?></div>
                                         <div class="bbb_viewed_name"><?=  substr($row2->nomart,0,20); ?>..</div>
 										<button type="button" class="verSliderClick3 btn btn-outline-success fa fa-search" 
-											data-product_code="<?=$row2->id?>"
+											data-product_code="<?=$row2->codart?>"
 											data-product_code1="<?=$row2->imageurl?>"
 											data-product_code4="<?=$row2->nomart?>"
 											data-product_code5="<?=$row2->valart?>"
-											data-product_code7="<?=$row2->descripción?>"
+											data-product_code7="<?=$row2->descripcion?>"
 											"> Ver</button>
                                     </div>
                                     <ul class="item_marks">
@@ -130,11 +130,11 @@
                                         <div class="bbb_viewed_price text-success">$<?= number_format($row3->valart); ?></div>
                                         <div class="bbb_viewed_name"><?=  substr($row3->nomart,0,20); ?>..</div>
 										<button type="button" class="verSliderClick3 btn btn-outline-success fa fa-search" 
-											data-product_code="<?=$row3->id?>"
+											data-product_code="<?=$row3->codart?>"
 											data-product_code1="<?=$row3->imageurl?>"
 											data-product_code4="<?=$row3->nomart?>"
 											data-product_code5="<?=$row3->valart?>"
-											data-product_code7="<?=$row3->descripción?>"
+											data-product_code7="<?=$row3->descripcion?>"
 											"> Ver</button>
                                     </div>
                                     <ul class="item_marks">
@@ -347,13 +347,29 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-
-					
-					<div id="verapayco">
-						<button type="button" class="btn btn-success" id="btnGuardarVenta">Guardar</button>
+					<div class="invisible">
+						<form >
+							<script
+								src="https://checkout.epayco.co/checkout.js"
+								class="epayco-button"
+								data-epayco-key="491d6a0b6e992cf924edd8d3d088aff1"
+								data-epayco-amount="50200"
+								data-epayco-name="Vestido Mujer Primavera"
+								data-epayco-description="Holis"
+								data-epayco-currency="cop"
+								data-epayco-country="co"
+								data-epayco-test="true"
+								data-epayco-external="false"
+								data-epayco-response="https://ejemplo.com/respuesta.html"
+								data-epayco-confirmation="https://ejemplo.com/confirmacion">
+							</script>
+						</form>
 					</div>
 					
-					<button type="button" class="btn btn-danger" data-dismiss="modal" >Cerrar</button>
+					<button type="button" class="btn btn-success" id="btnGuardarVenta">Guardar</button>
+				
+					
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 				</div>
 			</div>
 		</div>

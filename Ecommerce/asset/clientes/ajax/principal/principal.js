@@ -641,24 +641,6 @@ $('#tablaCarrito').on('click','#eliminarCarrito',function(){
     formData.append('articulo',articulo );
     formData.append('total',total );
 
-   /*
-    alertify.confirm('<h3 class="text-center fa fa-trash-o"> Eliminar</h3>', '<h6 class="text-center">Deseas quitar a '+nombre+'</h6>', function(){ 
-
-            $.ajax({
-                type : "POST",
-                url  :  urleliminarCarrito ,
-                dataType : "JSON",
-                data : formData,
-                contentType: false,
-                processData: false,
-                success: function(data){
-                    verUndCarrito();
-                    $('#verModalCarrito').modal('hide');
-                }
-            });
-    }
-    , function(){ alertify.error('Operacion Cancelada')});*/
-
     $.confirm({
         title: 'Eliminar!',
         content: 'Deseas quitar a <strong>'+nombre+'</strong>!',
@@ -754,7 +736,6 @@ $('#btnComprar').on('click',function(){
 
 //COMPRAR
 $('#ModalPago').on('click','#btnGuardarVenta',function() {
-//$('#btnGuardarVenta').on('click',function(){
 
     var formapago = $('[name="formapago"] option:selected').val();
     var direccion = $('[name="direccion"]').val();
@@ -806,6 +787,11 @@ $('#ModalPago').on('click','#btnGuardarVenta',function() {
                         }
                     }
                 });
+
+                $('[name="formapago"]').val('');
+                //$('[name="formapago"]').text('');
+                $('[name="direccion"]').val('');
+                $('[name="telefono"]').val('');
             }
         });
     }
@@ -820,7 +806,12 @@ $('#ModalPago').on('click','#btnGuardarVenta',function() {
             processData: false,
             success: function(data){
                 verUndCarrito();
-
+                $('[name="formapago"]').val('');
+                $('[name="direccion"]').val('');
+                $('[name="telefono"]').val('');
+                $('#ModalPago').modal('hide');
+                $(".epayco-button-render").trigger("click");
+                /*
                 $.alert({
                     title: 'Mensaje!',
                     content: '<h6 class="text-center">Continue con el pago en line!</h6>',
@@ -830,12 +821,13 @@ $('#ModalPago').on('click','#btnGuardarVenta',function() {
                             action: function () {}
                         }
                     }
-                });
+                });*/
 
                 var valfac = data[0].valfac;
                 var factura = data[0].tipfac+' - '+data[0].numfac;
                 
-
+               
+/*  
                 var epayco =` <form>
                                     <script
                                         src="https://checkout.epayco.co/checkout.js"
@@ -854,7 +846,11 @@ $('#ModalPago').on('click','#btnGuardarVenta',function() {
                                 </form>`;
 
 
-                $('#verapayco').html(epayco);
+                $('#verapayco').html(epayco);*/
+
+                $('[name="formapago"]').val('');
+                $('[name="direccion"]').val('');
+                $('[name="telefono"]').val('');
 
             }
         });
